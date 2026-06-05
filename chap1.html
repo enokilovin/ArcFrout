@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>赤石初歩論＃I - FRouT Web Archive</title>
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --text-color: #212529;
+            --primary-color: #dc3545; /* Redstone Red */
+            --primary-light: #f8d7da;
+            --border-color: #dee2e6;
+            --card-bg: #ffffff;
+            --code-bg: #e9ecef;
+            --placeholder-bg: #f1f3f5;
+            --placeholder-border: #adb5bd;
+            --font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        header p {
+            margin: 0.5rem 0 0 0;
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Project Assets Table */
+        .assets-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .assets-box h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 0.5rem;
+        }
+
+        /* Typography & Structure */
+        .chapter-section {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .section-tag {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #111;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: #333;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 0.75rem;
+        }
+
+        h3::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.2rem;
+            bottom: 0.2rem;
+            width: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+
+        strong {
+            color: var(--primary-color);
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 0.75rem 1rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f1f3f5;
+            font-weight: 600;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Highlight box for formulas */
+        .formula-box {
+            background-color: var(--primary-light);
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Placeholder Style (Pattern A) */
+        .placeholder-section {
+            background-color: var(--placeholder-bg);
+            border: 2px dashed var(--placeholder-border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            color: #6c757d;
+            position: relative;
+        }
+
+        .placeholder-section h2 {
+            color: #495057;
+            border-bottom: 1px solid var(--placeholder-border);
+        }
+
+        .placeholder-tag {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: var(--placeholder-border);
+            color: white;
+            font-size: 0.75rem;
+            padding: 0.1rem 0.5rem;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        /* Todo Box */
+        .todo-box {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .todo-box h4 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            color: #856404;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: #6c757d;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>赤石初歩論 ＃I</h1>
+    <p>FRouT Standard Technical Notation System - Web Archive</p>
+</header>
+
+<div class="container">
+
+    <div class="assets-box">
+        <h3>Project Assets Status</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>File Component</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>信号 ＃I-Sig</strong></td>
+                    <td><span style="color: green; font-weight: bold;">✔ Approved</span></td>
+                </tr>
+                <tr>
+                    <td><strong>信号接続 ＃I-Con</strong></td>
+                    <td><span style="color: orange; font-weight: bold;">⏳ In Progress</span></td>
+                </tr>
+                <tr>
+                    <td><strong>隣接更新 ＃I-Upd</strong></td>
+                    <td><span style="color: blue; font-weight: bold;">🔍 Under Review</span></td>
+                </tr>
+                <tr>
+                    <td><strong>環境構築 ＃I-Env</strong></td>
+                    <td><span style="color: green; font-weight: bold;">✔ Approved</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="chapter-section" id="sig">
+        <div class="section-tag">＃I-Sig</div>
+        <h2>信号 ( SIGNAL )</h2>
+        
+        <h3>01. オフ / オン ( off / on ) = ( 0 / 1 )</h3>
+        <p>マインクラフトの世界にあるブロックは、オフまたはオンのどちらかの状態をつねにもっています。動力を受け取っていない状態を「<strong>オフ</strong>」と呼び、受け取っている状態を「<strong>オン</strong>」と呼びます。たとえば、RSダストはオフのとき光っていませんが、オンのとき光っています。</p>
+        <p>動力を生みだす方法や動力源となるブロックは多種多様です。レバーを引く、ボタンを押すなど多々あります。ただ赤石回路を動かすためには、その動力をいろいろな場所に送らなければいけません。それを送ってくれるのが「<strong>信号</strong>」です。信号は 2 種類あって、オンにするための信号を「**オン信号**」と呼び、オフにするための信号を「**オフ信号**」と呼んで区別しておきましょう。たとえば、ピストンはオン信号が送られると伸展し始めて、そのオンの状態でオフ信号が送られると収縮し始めます。</p>
+        <p>あるブロックにおいて、オフ信号が送られている状態を「オフ」「0」「LOW」と呼び、オン信号が送られている状態を「オン」「1」「HIGH」と呼ぶことがあります。この別称はとりわけ<strong>論理回路</strong>のなかで重要になるので、〈ブール論理｜V-Bool〉という文書であつかうことにしましょう。とにかく、この二値（0 / 1）を上手にあつかうことができれば、マインクラフトの世界で<strong>複雑な自動装置や計算機</strong>などを作ることができるのです！</p>
+
+        <h3>02. 信号強度 ( signal strength ) = ( 0-15 )</h3>
+        <p>先ほど冒頭で「ブロックは、オフまたはオンのどちらかの状態をつねもしています」と述べました。これは<strong>デジタル（二値）</strong>の視点なのですが、それとは違う**アナログ（多値）**の視点もマインクラフトでは重要になります。アナログ信号、つまり「<strong>連続的な値をもつ信号</strong>」と深い関わりをもつブロックが<strong>RSダスト</strong>と<strong>コンパレーター</strong>です。</p>
+        <p>RSダストは光っている状態と光っていない状態をもっていますが、オン信号が送られて光った状態のなかでも光り方が様々あります。この光り方の違いは、<strong>信号の強さ</strong>の違いによって生じるものです。この信号の強さのことを「**信号強度**」と呼びます。</p>
+        <p>まず信号強度は 0 から 15 まであります。そのうち、<strong>強度 0</strong> の信号が<strong>オフ</strong>信号のことで、それ以外の<strong>強度 1 から 15 まで</strong>の信号が<strong>オン</strong>信号のことです。RSダストの光り方は、受け取っている信号強度の違いによって段階的に変化します。一方、コンパレーターの光り方に段階はありませんが、この全 16 通りの強度を保持したまま信号を出力することができます。</p>
+        <p>一方、リピーターは信号強度を保持できず、オフ信号が送られると信号強度「0」を出力して、オン信号が送られると信号強度「15」にリセットして出力します。このように、RSダストとコンパレーター以外のブロックはすべてデジタルな動きをするわけです。</p>
+        <p>なお英語圏では、信号強度のことを「ss」や「pl」と略すことがあります。主に見かけるのは「ss」のほうで、たとえば「ss10」は「信号強度 10」を意味するので覚えておきましょう。</p>
+
+        <h3>03. 動力源化 ( powered )</h3>
+        <p>動力を生みだす方法や動力源となるブロックの話に移りましょう。ブロックのなかには、もともと動力を生みだすために用意されたもの（ボタンなど）もあれば、そうではないものもあります。ただ動力を生みだせないブロックでも、その種類によってはオン信号が送られることによって<strong>動力源の代わり</strong>になるブロックもあります。それはRSブロックのように、隣接するリピーターやトラップドア等々に対してオン信号を伝えることができるようになるわけです。これを「<strong>動力源化</strong>」と呼ぶことにしましょう。</p>
+        <p>動力源化できる種類のブロックは「導体ブロック」あるいは単に「<strong>導体</strong>」と呼ばれています。たとえば、丸石、RSランプ、ドロッパーなどは導体です。一方、ガラス、半ブロック、ピストンなどは動力源化できない「不導体ブロック」あるいは単に「<strong>不導体</strong>」と呼ばれ、オフ信号しか通さない絶縁体として働きます。いずれにしても、信号強度が維持される点に注意してください。</p>
+        <p>さて、オン信号が送られた導体は動力源の代わりになるわけですが、何のブロックによってオン信号が送られたかにおうじて、オン信号をまわりにどう伝えるかが変わってきます。とりわけRSダストにオン信号を伝えるか伝えないかが変わってきます。この違いを理解するために「強-動力源化」と「弱-動力源化」というふうに区別して確かめていきましょう。</p>
+        
+        <h4>強-動力源化 ( hard-powered )</h4>
+        <p>リピーター、コンパレーター、オブザーバーなどによって直接オン信号が送られた導体は「<strong>強-動力源化</strong>」します。この状態だと、隣接するトラップドア等々だけでなく<strong>RSダストにもオン信号を伝えることができます</strong>。ただし、他の導体を動力源化することはできません。</p>
+        
+        <h4>弱-動力源化 ( soft-powered )</h4>
+        <p>RSダストによって直接オン信号が送られた導体は「<strong>弱-動力源化</strong>」します。この状態だと、隣接するトラップドア等々にオン信号を伝えることはできますが、<strong>別のRSダストにはオン信号を伝えることができません</strong>。弱-動力源化の場合、裏を返せば、オン信号をRSダストに伝えないまま他のブロックに伝えることができるので、この<strong>範囲の狭さ</strong>をうまく使って回路を組むこともよくあります。</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th class="text-center">状態</th>
+                    <th class="text-center">RSダスト以外から受信</th>
+                    <th class="text-center">RSダストから受信</th>
+                    <th class="text-center">RSダスト以外に送信</th>
+                    <th class="text-center">RSダストに送信</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-center"><strong>強-動力源化</strong></td>
+                    <td class="text-center">✓</td>
+                    <td class="text-center">-</td>
+                    <td class="text-center">✓</td>
+                    <td class="text-center">✓</td>
+                </tr>
+                <tr>
+                    <td class="text-center"><strong>弱-動力源化</strong></td>
+                    <td class="text-center">-</td>
+                    <td class="text-center">✓</td>
+                    <td class="text-center">✓</td>
+                    <td class="text-center">-</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>04. 活性化 ( activated )</h3>
+        <p>ブロックのなかには、送られた信号に反応できるものがあります。たとえばTNTがオン信号に反応して爆発する、ピストンがオフ信号に反応して縮み始める等々です。このように、ブロックの種類によっては信号に反応して<strong>起動する、特有のアクション（状態や外見が変わるなど）を起こす</strong>ものがあります。これを「<strong>活性化</strong>」と呼びます。</p>
+        <p>活性化できる種類のブロックを「<strong>起動素子</strong>」と呼ぶことにしましょう。ここで注意が必要なのは、<strong>起動素子かつ導体**である（活性化もできて動力源化もできる）ようなブロックがあることです。これに該当するのはRSランプやドロッパーで、状態としては以下の 4 通りの組み合わせがありえます。</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th class="text-center">状態分類</th>
+                    <th class="text-center">①</th>
+                    <th class="text-center">②</th>
+                    <th class="text-center">③</th>
+                    <th class="text-center">④</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>活性化</strong></td>
+                    <td class="text-center">-</td>
+                    <td class="text-center">✓</td>
+                    <td class="text-center">-</td>
+                    <td class="text-center">✓</td>
+                </tr>
+                <tr>
+                    <td><strong>動力源化</strong></td>
+                    <td class="text-center">-</td>
+                    <td class="text-center">-</td>
+                    <td class="text-center">✓</td>
+                    <td class="text-center">✓</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <ul>
+            <li><strong>① 活性化も動力源化もしていない状態</strong>：これはオフ信号が送られている状態です。</li>
+            <li><strong>② 活性化しているが動力源化していない状態</strong>：これはたとえば導体を介してオン信号が送られている状態です。</li>
+            <li><strong>③ 活性化していないが動力源化している状態</strong>：一見「矛盾」しています。オン信号が送られて動力源化しているはずなのに、活性化できていない状態だからです。しかし、実際は可能です。</li>
+            <li><strong>④ 活性化も動力源化もしている状態</strong>：これはたとえばリピーターによって直接オン信号が送られている状態です。</li>
+        </ul>
+
+        <h3>05. 起爆剤 ( activation trigger )</h3>
+        <p>活性化のためには信号が送られるだけでは不十分で、その信号に反応するための「<strong>起爆剤</strong>」も必要になります。その起爆剤のことを「<strong>隣接更新</strong>」と呼びます。</p>
+        <p>起動素子は、隣接更新を受け取らないかぎり活性化することはありません。言いかえると、起動素子自身が**今どのような状態になるべきか**は隣接更新を受け取ってはじめて判定されるわけです。一方、動力源化については隣接更新が不要です。この「**信号と起爆剤の分離**」という仕様をうまく使うことで、先ほどの「③活性化していないが動力源化している状態」をつくりだすことが可能になります。</p>
+
+        <div class="formula-box">
+            信号変化 ＋ 隣接更新 → 状態変化（アップデート）
+        </div>
+
+        <div class="todo-box">
+            <h4>Sig項 - 今後追加予定の図解・検証タスク</h4>
+            <ul>
+                <li>比喩表現の推敲：動力、信号、素子 → 太陽、光、日照センサー</li>
+                <li>図解案（信号強度の減衰：isometricRenderの導入）</li>
+                <li>信号と起爆剤の連動相関ツリー：[信号 → 起動 ← 更新] および [信号 → [B]UD ← ×]</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="chapter-section" id="con">
+        <div class="section-tag">＃I-Con</div>
+        <h2>信号接続 ( SIGNAL CONNECTION )</h2>
+        
+        <h3>01. 接続 ( connection )</h3>
+        <p>「接続」というのは、あるブロックに対して信号が送られること、または信号が送られて状態変化できるようになることです。この接続方法には「**直接続**」と「**間接続**」の2種類があります。</p>
+
+        <h3>02. 直接続 ( direct connection )</h3>
+        <p>「直接続」の定義は、あるブロックに対して <strong>1 マス先</strong>から信号が送られることです。ブロックと動力源が隣接している状態、および動力源化した導体とつながっている状態を指します。</p>
+
+        <h3>03. 間接続 ( indirect connection )</h3>
+        <p>「間接続」の定義は、あるブロックに対して <strong>2 マス先</strong>から動力を受け取っている状態です。間接続可能なブロックは <strong>4 種類</strong>（RSダスト・ピストン・ドロッパー・ディスペンサー）に限られます。RSダスト限定のものを「**斜め間接続**」、それ以外を「**準接続（QC）**」と呼びます。</p>
+
+        <h4>斜め間接続 ( diagonally indirect connection )</h4>
+        <p>RSダストが斜め上下にある別のRSダストと接続するパターンです。水平方向や上下に2マス離れた接続はできません。導体や不導体の介入によって以下の切断パターンが発生します。</p>
+        
+        <ul>
+            <li><strong>（ⅰ）水平方向が「導体」の場合</strong>：斜め下からの動力を受け取ることができません（完全切断）。ただし、中心のRSダストと導体上のRSダストは斜め同士で双方向に信号を送りあえます。</li>
+            <li><strong>（ⅱ）水平方向が「不導体」の場合</strong>：斜め上からの動力を受け取ることができません（部分的切断）。不導体の上に置かれている斜め上のRSダストに対し、中心のRSダストは一方向（斜め上向き）にのみ信号を送ることができます。</li>
+        </ul>
+
+        <h4>上向き間接続 ( upwards indirect connection = QC / 準接続 )</h4>
+        <p>ピストン、ドロッパー、ディスペンサー限定で、斜め上もしくは 2 マス上の動力源と接続する挙動です。海外では **quasi connectivity (QC)** と名づけられており、歴史的にはバグから「意図された仕様」へと昇格した背景を持ちます。これによって非常に高度な回路構築が可能になります。</p>
+    </div>
+
+    <div class="chapter-section" id="upd">
+        <div class="section-tag">＃I-Upd</div>
+        <h2>更新順序 ( UPDATE ORDER )</h2>
+        
+        <h3>01 隣接更新 ( neighbour update )</h3>
+        <p>隣接更新とは、ブロック単位での変化を伝える仕組みです。変化が起きた際、①更新を**瞬時に**送って、②受け取ったブロックが自身の状態をチェックし、③必要があれば状態を変えます。この連鎖を「更新連鎖」と呼び、秩序だった規則（**更新順序 update order**）に基づいて処理されます。これを完全に掌握することで、方角依存や座標依存の完全な制御が可能になります。</p>
+
+        <h3>隣接更新の種類と役割 ( BU / SU / CU )</h3>
+        <ul>
+            <li><strong>a. BU ( block update )</strong>：オブザーバー以外の赤石系素子を作動させる更新。RSダストが強度を変化させた場合、これを起点にBUが瞬時に連鎖します。</li>
+            <li><strong>b. SU ( state update )</strong>：フェンスなどの形状（shape）変化、不適合によるアイテム化、および<strong>オブザーバーの起動</strong>を担当する更新。RSダストはSUを受け取っても信号強度の再計算は行わず、結線の確認（形状変化）を行います。</li>
+        </ul>
+
+        <div class="placeholder-section">
+            <span class="placeholder-tag">c. CU ( comparator update )</span>
+            <h3>c. CU ( comparator update )</h3>
+            <p>※ このセクションの本文は現在準備中です。コンパレーターの作動に特化した限定的な更新処理について、今後のアップデートで詳細が追加される予定です。</p>
+        </div>
+
+        <div class="placeholder-section">
+            <span class="placeholder-tag">02 ~ 05 Sections</span>
+            <h3>02 ~ 05 未執筆セクション</h3>
+            <ul>
+                <li>02 隣接更新順序 ( neighbour-update order ) ✕</li>
+                <li>03 自己更新 ( self update ) ✕</li>
+                <li>04 更新先約 ( update scheduling ) 1.19+ ✕</li>
+                <li>05 更新検知 ( update detector ) ✕</li>
+            </ul>
+            <p>※ 座標依存フリーの理論構築に向けた、ゲームエンジン内部のスケジューリングロジックは次期バージョンで統合予定です。</p>
+        </div>
+    </div>
+
+    <div class="chapter-section" id="cpt">
+        <div class="section-tag">＃I-CCat / ＃I-Cpt</div>
+        <h2>赤石素子と分類 ( REDSTONE COMPONENTS )</h2>
+        <p>赤石装置はすべて「赤石回路と何らかの仕掛け」で成り立ち、赤石回路は「**赤石素子＋動力信号**」で構成されます。素子は物理的なもの、信号は情報的なものです。</p>
+
+        <h3>01. 赤石素子の定義分類</h3>
+        <ul>
+            <li><strong>赤石基本素子 ( brc - basic rs-component )</strong>：[入力 → 状態変化 (→ 出力)] の構造を持つブロック（ボタンやピストンなど）。</li>
+            <li><strong>赤石応用素子 ( arc - applied rs-component )</strong>：基本素子を補助できるもの。ブロックに限らず、ボート、トロッコ、アーマースタンドなどの「エンティティ」も含まれます。</li>
+        </ul>
+
+        <h3>02. 基本素子 (brc) の3大分類</h3>
+        <ul>
+            <li><strong>動力素子 ( pc - power component )</strong>：動力を「生む」もの（レバー、ボタン等）。</li>
+            <li><strong>伝送素子 ( tc - transmission component )</strong>：動力を受けて自身が変わり、周囲に伝えるもの（RSダスト、リピーター、コンパレーターの3種のみ）。</li>
+            <li><strong>作動素子 ( mc - mechanism component )</strong>：動力を受けて特有のアクションを起こすもの（ピストン、ドロッパー、TNT等）。</li>
+        </ul>
+
+        <h3>03. 複合素子 ( cc - composite component )</h3>
+        <p>基本素子としての機能と、応用素子としての属性（導体など）をあわせもつ二面性ブロックです。</p>
+        <ul>
+            <li><strong>動力素子 × 導体素子 ( cpc )</strong>：ターゲットブロックがこれに該当。</li>
+            <li><strong>作動素子 × 導体素子 ( cmc )</strong>：ドロッパー、ディスペンサー、コマンドブロックなどがこれに該当。</li>
+        </ul>
+    </div>
+
+    <div class="chapter-section" id="env">
+        <div class="section-tag">＃I-Env</div>
+        <h2>環境構築 ( ENVIRONMENT SETUP )</h2>
+        <h3>01 シングルプレイ ( csp; creative single play )</h3>
+        <p>厳密な論理検証を行うための赤石開発向けシングルワールドの構築プロセスです。</p>
+        <ul>
+            <li><strong>α 起動構成 ( game setup )</strong>：ゲームディレクトリの分離、検証バージョンに応じた起動構成の管理、およびJVM引数によるメモリ最適化。</li>
+            <li><strong>β ワールド構成 ( world setup )</strong>：不要なエンティティ負荷を排除するための難易度設定（ピースフル）や、構造物生成の最適化。</li>
+            <li><strong>γ クライアントMOD ( client mod )</strong>：処理フェーズの可視化や、論理検証に不可欠な各種テクニカルMOD（MiniHUD、WorldEdit等）のセットアップ。</li>
+        </ul>
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 FRouT Project / Redstone Basic Theory Archive</p>
+</footer>
+
+</body>
+</html>
