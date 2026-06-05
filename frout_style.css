@@ -1,5 +1,5 @@
 /* ==========================================
-   FRouT DESIGN SYSTEM VER 3.0 (Frout Standard)
+   FRouT DESIGN SYSTEM VER 3.1 (Frout Standard)
    ========================================== */
 :root {
     --bg-primary: #121214;        
@@ -13,6 +13,16 @@
     --font-serif: 'Lora', serif;
     --font-sans: 'Noto Sans JP', sans-serif;
     --font-mono: 'JetBrains Mono', monospace; 
+
+    /* カラムの横幅をここで一括管理 */
+    --sidebar-left-width: 260px;
+    --sidebar-right-width: 240px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -20,11 +30,63 @@ body {
     color: var(--text-main);
     font-family: var(--font-sans);
     line-height: 1.85;
-    padding: 2rem;
-    max-width: 800px;
-    margin: 0 auto;
 }
 
+/* ==========================================
+   レイアウト：3カラム構造ルール
+   ========================================== */
+.frout-container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* 左セクション（ナビゲーション） */
+.frout-sidebar-left {
+    width: var(--sidebar-left-width);
+    background-color: var(--bg-secondary);
+    border-right: 1px solid #2d2d34;
+    padding: 2.5rem 1.5rem;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+
+/* 中央セクション（メイン本文） */
+.frout-main-content {
+    flex: 1;
+    padding: 3rem 4rem;
+    max-width: 800px;
+    overflow-x: hidden;
+}
+
+/* 右セクション（インフォメーション・章の細目次） */
+.frout-sidebar-right {
+    width: var(--sidebar-right-width);
+    background-color: var(--bg-secondary);
+    border-left: 1px solid #2d2d34;
+    padding: 2.5rem 1.5rem;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+
+/* 画面が狭いときは左右サイドバーを隠す（スマホ対応） */
+@media (max-width: 1200px) {
+    .frout-sidebar-right { display: none; }
+}
+@media (max-width: 800px) {
+    .frout-sidebar-left { display: none; }
+    .frout-main-content { padding: 2rem 1.5rem; }
+}
+
+/* ==========================================
+   各パーツのデザイン
+   ========================================== */
 /* 3. 通常の学術記述 */
 p {
     font-family: var(--font-sans);
@@ -39,7 +101,7 @@ mark {
     font-weight: 600;
 }
 
-/* 4. リンク明示 (Froutオリジナル名称) */
+/* 4. リンク明示 */
 .frout-link {
     color: var(--accent-red);
     text-decoration: none;
@@ -50,7 +112,7 @@ mark {
     opacity: 0.8;
 }
 
-/* 5. タグ (Froutオリジナル名称) */
+/* 5. タグ */
 .frout-tag {
     font-family: var(--font-mono);
     font-size: 0.75rem;
@@ -74,7 +136,7 @@ mark {
     border-radius: 0 6px 6px 0;
 }
 
-/* 7. 条件分岐・マトリクス表 (Froutオリジナル名称) */
+/* 7. 条件分岐・マトリクス表 */
 .frout-table {
     width: 100%;
     border-collapse: collapse;
