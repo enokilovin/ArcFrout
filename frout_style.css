@@ -1,23 +1,31 @@
 /* ==========================================
-   FRouT DESIGN SYSTEM VER 3.0 (CSS Standard)
+   FRouT DESIGN SYSTEM VER 3.0 (Frout Standard)
    ========================================== */
 :root {
-    /* カラーパレット：にゃんしばさんリスペクトの美麗ダークテーマ */
-    --bg-primary: #121214;        /* ベース背景 */
-    --bg-secondary: #1a1a1e;      /* サイドバー・カード背景 */
-    --bg-code: #0b0b0d;           /* コードブロック背景 */
-    --text-main: #e2e8f0;         /* メイン文字色（白に近いグレー） */
-    --text-muted: #8a99ad;        /* 補足・消えかかった文字色 */
-    --accent-red: #e11d48;        /* レッドストーン・レッド（主音色） */
-    --marker-color: rgba(225, 29, 72, 0.25); /* マーカー・ハイライト */
+    --bg-primary: #121214;        
+    --bg-secondary: #1a1a1e;      
+    --bg-code: #0b0b0d;           
+    --text-main: #e2e8f0;         
+    --text-muted: #8a99ad;        
+    --accent-red: #e11d48;        
+    --marker-color: rgba(225, 29, 72, 0.25); 
     
-    /* フォントシステム（欧文はJetBrains Mono / Loraを固定） */
     --font-serif: 'Lora', serif;
     --font-sans: 'Noto Sans JP', sans-serif;
     --font-mono: 'JetBrains Mono', monospace; 
 }
 
-/* 3. 通常の学術記述（本文・太字・インライン強調） */
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    line-height: 1.85;
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* 3. 通常の学術記述 */
 p {
     font-family: var(--font-sans);
     color: var(--text-main);
@@ -31,19 +39,19 @@ mark {
     font-weight: 600;
 }
 
-/* 4. リンク明示（相互参照リンク） */
-.academic-link {
+/* 4. リンク明示 (Froutオリジナル名称) */
+.frout-link {
     color: var(--accent-red);
     text-decoration: none;
     border-bottom: 1px dashed var(--accent-red);
     transition: opacity 0.2s;
 }
-.academic-link:hover {
+.frout-link:hover {
     opacity: 0.8;
 }
 
-/* 5. タグ（一意の識別コード） */
-.tech-tag {
+/* 5. タグ (Froutオリジナル名称) */
+.frout-tag {
     font-family: var(--font-mono);
     font-size: 0.75rem;
     background: rgba(225, 29, 72, 0.15);
@@ -55,7 +63,7 @@ mark {
 }
 
 /* 6. 数式・論理公式 */
-.formula-box {
+.frout-formula {
     background-color: rgba(225, 29, 72, 0.08);
     border-left: 3px solid var(--accent-red);
     padding: 1.25rem;
@@ -66,8 +74,8 @@ mark {
     border-radius: 0 6px 6px 0;
 }
 
-/* 7. 条件分岐・マトリクス表（学術テーブル） */
-.academic-table {
+/* 7. 条件分岐・マトリクス表 (Froutオリジナル名称) */
+.frout-table {
     width: 100%;
     border-collapse: collapse;
     margin: 1.75rem 0;
@@ -76,28 +84,28 @@ mark {
     border-radius: 6px;
     overflow: hidden;
 }
-.academic-table th, .academic-table td {
+.frout-table th, .frout-table td {
     padding: 0.8rem 1rem;
     border: 1px solid #2d2d34;
 }
-.academic-table th {
+.frout-table th {
     background-color: #212127;
     color: #fff;
     font-weight: 600;
 }
 
 /* 8. 箇条書き・リスト */
-.styled-list {
+.frout-list {
     list-style: none;
     margin-bottom: 1.5rem;
 }
-.styled-list li {
+.frout-list li {
     position: relative;
     padding-left: 1.25rem;
     margin-bottom: 0.5rem;
     color: var(--text-main);
 }
-.styled-list li::before {
+.frout-list li::before {
     content: "";
     position: absolute;
     left: 0.1rem;
@@ -105,11 +113,11 @@ mark {
     width: 5px;
     height: 5px;
     background-color: var(--accent-red);
-    transform: rotate(45deg); /* 赤石らしいダイヤ型のバレット */
+    transform: rotate(45deg);
 }
 
-/* 9. 検証用ゲーム内コマンド（コードブロック） */
-.cmd-block {
+/* 9. 検証用ゲーム内コマンド */
+.frout-cmd {
     background-color: var(--bg-code);
     border: 1px solid #2d2d34;
     border-radius: 6px;
@@ -117,12 +125,12 @@ mark {
     margin: 1.5rem 0;
     font-family: var(--font-mono);
     font-size: 0.88rem;
-    color: #38bdf8; /* コマンド用に見やすいシアンカラー */
+    color: #38bdf8;
     overflow-x: auto;
 }
 
-/* 10. 未執筆・WIP領域（パターンA） */
-.placeholder-section {
+/* 10. 未執筆・WIP領域 */
+.frout-wip {
     background-color: rgba(255, 255, 255, 0.02);
     border: 1px dashed #454552;
     border-radius: 6px;
@@ -130,16 +138,7 @@ mark {
     margin: 1.75rem 0;
     color: var(--text-muted);
 }
-.placeholder-section h4 {
+.frout-wip h4 {
     color: #fff;
     margin-bottom: 0.5rem;
-}
-
-/* 11. 学術的な註釈（フットノート） */
-.footnote-ref {
-    text-decoration: none;
-    color: var(--accent-red);
-    font-family: var(--font-serif);
-    font-size: 0.75rem;
-    vertical-align: super;
 }
