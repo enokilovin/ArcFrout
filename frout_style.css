@@ -1,0 +1,145 @@
+/* ==========================================
+   FRouT DESIGN SYSTEM VER 3.0 (CSS Standard)
+   ========================================== */
+:root {
+    /* カラーパレット：にゃんしばさんリスペクトの美麗ダークテーマ */
+    --bg-primary: #121214;        /* ベース背景 */
+    --bg-secondary: #1a1a1e;      /* サイドバー・カード背景 */
+    --bg-code: #0b0b0d;           /* コードブロック背景 */
+    --text-main: #e2e8f0;         /* メイン文字色（白に近いグレー） */
+    --text-muted: #8a99ad;        /* 補足・消えかかった文字色 */
+    --accent-red: #e11d48;        /* レッドストーン・レッド（主音色） */
+    --marker-color: rgba(225, 29, 72, 0.25); /* マーカー・ハイライト */
+    
+    /* フォントシステム（欧文はJetBrains Mono / Loraを固定） */
+    --font-serif: 'Lora', serif;
+    --font-sans: 'Noto Sans JP', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace; 
+}
+
+/* 3. 通常の学術記述（本文・太字・インライン強調） */
+p {
+    font-family: var(--font-sans);
+    color: var(--text-main);
+    line-height: 1.85;
+    margin-bottom: 1.25rem;
+    text-align: justify;
+}
+mark {
+    background: linear-gradient(to bottom, transparent 65%, var(--marker-color) 65%);
+    color: inherit;
+    font-weight: 600;
+}
+
+/* 4. リンク明示（相互参照リンク） */
+.academic-link {
+    color: var(--accent-red);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--accent-red);
+    transition: opacity 0.2s;
+}
+.academic-link:hover {
+    opacity: 0.8;
+}
+
+/* 5. タグ（一意の識別コード） */
+.tech-tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    background: rgba(225, 29, 72, 0.15);
+    color: var(--accent-red);
+    border: 1px solid rgba(225, 29, 72, 0.3);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+/* 6. 数式・論理公式 */
+.formula-box {
+    background-color: rgba(225, 29, 72, 0.08);
+    border-left: 3px solid var(--accent-red);
+    padding: 1.25rem;
+    margin: 1.75rem 0;
+    text-align: center;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 0 6px 6px 0;
+}
+
+/* 7. 条件分岐・マトリクス表（学術テーブル） */
+.academic-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.75rem 0;
+    font-size: 0.9rem;
+    background: var(--bg-secondary);
+    border-radius: 6px;
+    overflow: hidden;
+}
+.academic-table th, .academic-table td {
+    padding: 0.8rem 1rem;
+    border: 1px solid #2d2d34;
+}
+.academic-table th {
+    background-color: #212127;
+    color: #fff;
+    font-weight: 600;
+}
+
+/* 8. 箇条書き・リスト */
+.styled-list {
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+.styled-list li {
+    position: relative;
+    padding-left: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+.styled-list li::before {
+    content: "";
+    position: absolute;
+    left: 0.1rem;
+    top: 0.65rem;
+    width: 5px;
+    height: 5px;
+    background-color: var(--accent-red);
+    transform: rotate(45deg); /* 赤石らしいダイヤ型のバレット */
+}
+
+/* 9. 検証用ゲーム内コマンド（コードブロック） */
+.cmd-block {
+    background-color: var(--bg-code);
+    border: 1px solid #2d2d34;
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    color: #38bdf8; /* コマンド用に見やすいシアンカラー */
+    overflow-x: auto;
+}
+
+/* 10. 未執筆・WIP領域（パターンA） */
+.placeholder-section {
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px dashed #454552;
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin: 1.75rem 0;
+    color: var(--text-muted);
+}
+.placeholder-section h4 {
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+/* 11. 学術的な註釈（フットノート） */
+.footnote-ref {
+    text-decoration: none;
+    color: var(--accent-red);
+    font-family: var(--font-serif);
+    font-size: 0.75rem;
+    vertical-align: super;
+}
