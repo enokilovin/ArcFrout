@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>赤石基礎論：赤石にまつわる普遍学 | FRouT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #121214;       
+            --bg-secondary: #1a1a1e;     
+            --text-main: #e2e8f0;        
+            --text-muted: #8a99ad;       
+            --accent-red: #e11d48;       
+            --font-serif: 'Lora', serif;
+            --font-sans: 'Noto Sans JP', sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: var(--bg-primary); color: var(--text-main); font-family: var(--font-sans); line-height: 1.8; display: flex; justify-content: center; padding: 4rem 2rem; }
+        .cover-container { max-width: 800px; width: 100%; }
+        .site-header { text-align: center; margin-bottom: 5rem; border-bottom: 1px solid #2d2d34; padding-bottom: 3rem; }
+        h1 { font-size: 2.8rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem; }
+        .subtitle { font-family: var(--font-serif); color: var(--text-muted); font-size: 1.2rem; letter-spacing: 0.05em; }
+        
+        .intro-section { margin-bottom: 4rem; font-size: 1.05rem; color: #cbd5e1; text-align: justify; }
+        
+        .chapter-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 3rem; }
+        .chapter-card { background-color: var(--bg-secondary); border: 1px solid #2d2d34; border-radius: 8px; padding: 1.75rem; text-decoration: none; color: inherit; transition: all 0.25s ease; display: flex; flex-direction: column; gap: 0.5rem; }
+        .chapter-card:hover { border-color: var(--accent-red); transform: translateY(-2px); }
+        .card-meta { font-family: var(--font-serif); color: var(--accent-red); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.05em; }
+        .card-title { font-size: 1.3rem; color: #fff; font-weight: 700; }
+        .card-desc { color: var(--text-muted); font-size: 0.95rem; }
+        .wip-tag { font-size: 0.75rem; background: #2d2d34; color: var(--text-muted); padding: 0.1rem 0.4rem; border-radius: 4px; margin-left: 0.5rem; vertical-align: middle; }
+    </style>
+</head>
+<body>
+    <div class="cover-container">
+        <header class="site-header">
+            <h1>赤石基礎論：赤石にまつわる普遍学</h1>
+            <div class="subtitle">FRouT : Fundamental Redstone Theory in Minecraft Java</div>
+        </header>
+
+        <section class="intro-section">
+            <p>本論は、Minecraft Java Editionにおけるレッドストーン論理およびメカニクスを包括的かつ体系的に整理し、コミュニティへ学術的基盤を提供することを目的とした研究アーカイブです。ソースコードに準拠した厳密な定義に基づき、回路を計算機科学・形式論理学の次元へと昇華させます。</p>
+        </section>
+
+        <h2 style="font-size: 1.4rem; border-left: 4px solid var(--accent-red); padding-left: 0.75rem; margin-bottom: 1.5rem;">論文目録 / 7 Disciplines</h2>
+        
+        <div class="chapter-grid">
+            <!-- 各章へのリンクカード -->
+            <a href="chap1.html" class="chapter-card">
+                <span class="card-meta">DISCIPLINE 01 // RS-ELEMENTS</span>
+                <span class="card-title">Ⅰ 赤石初歩論</span>
+                <span class="card-desc">信号強度、強/弱動力源化の定義、および `/tick` コマンドを用いた環境構築とシグナル接続の原則。</span>
+            </a>
+
+            <a href="chap2.html" class="chapter-card">
+                <span class="card-meta">DISCIPLINE 02 // RS-CHRONOLOGY</span>
+                <span class="chapter-id"></span>
+                <span class="card-title">Ⅱ 赤石時間論</span>
+                <span class="card-desc">ゲームティックと赤石ティックの本質。内部処理フェーズにおける3大コンポーネント（PLC / STC / BEC）の厳密な分類。</span>
+            </a>
+
+            <a href="chap3.html" class="chapter-card">
+                <span class="card-meta">DISCIPLINE 03 // RS-PERFORMANCE</span>
+                <span class="card-title">Ⅲ 赤石負荷論</span>
+                <span class="card-desc">サーバー演算（MSPT）を圧迫する隣接更新オーバーヘッドの正体と、`/debug` を用いたプロファイリング最適化。</span>
+            </a>
+
+            <!-- 未執筆の章はカードのスタイルを変えるか、タグをつける -->
+            <div class="chapter-card" style="opacity: 0.6; cursor: not-allowed;">
+                <span class="card-meta">DISCIPLINE 04 // WIP</span>
+                <span class="card-title">Ⅳ 赤石技術論 <span class="wip-tag">Under Construction</span></span>
+                <span class="card-desc">Coming soon...（各種論理ゲート、予約リスト管理、RSCv3記法の実践）</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
