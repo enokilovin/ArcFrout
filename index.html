@@ -1,81 +1,144 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>赤石基礎論：赤石にまつわる普遍学 | FRouT</title>
+    <title>
+        赤石基礎論｜Fundamental RS Theory
+    </title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-primary: #121214;       
-            --bg-secondary: #1a1a1e;     
-            --text-main: #e2e8f0;        
-            --text-muted: #8a99ad;       
-            --accent-red: #e11d48;       
-            --font-serif: 'Lora', serif;
-            --font-sans: 'Noto Sans JP', sans-serif;
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background-color: var(--bg-primary); color: var(--text-main); font-family: var(--font-sans); line-height: 1.8; display: flex; justify-content: center; padding: 4rem 2rem; }
-        .cover-container { max-width: 800px; width: 100%; }
-        .site-header { text-align: center; margin-bottom: 5rem; border-bottom: 1px solid #2d2d34; padding-bottom: 3rem; }
-        h1 { font-size: 2.8rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem; }
-        .subtitle { font-family: var(--font-serif); color: var(--text-muted); font-size: 1.2rem; letter-spacing: 0.05em; }
-        
-        .intro-section { margin-bottom: 4rem; font-size: 1.05rem; color: #cbd5e1; text-align: justify; }
-        
-        .chapter-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 3rem; }
-        .chapter-card { background-color: var(--bg-secondary); border: 1px solid #2d2d34; border-radius: 8px; padding: 1.75rem; text-decoration: none; color: inherit; transition: all 0.25s ease; display: flex; flex-direction: column; gap: 0.5rem; }
-        .chapter-card:hover { border-color: var(--accent-red); transform: translateY(-2px); }
-        .card-meta { font-family: var(--font-serif); color: var(--accent-red); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.05em; }
-        .card-title { font-size: 1.3rem; color: #fff; font-weight: 700; }
-        .card-desc { color: var(--text-muted); font-size: 0.95rem; }
-        .wip-tag { font-size: 0.75rem; background: #2d2d34; color: var(--text-muted); padding: 0.1rem 0.4rem; border-radius: 4px; margin-left: 0.5rem; vertical-align: middle; }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,600;1,400&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/enokilovin/ArcFrout@main/frout_style.css">
 </head>
+
 <body>
-    <div class="cover-container">
-        <header class="site-header">
-            <h1>赤石基礎論：赤石にまつわる普遍学</h1>
-            <div class="subtitle">FRouT : Fundamental Redstone Theory in Minecraft Java</div>
-        </header>
-
-        <section class="intro-section">
-            <p>本論は、Minecraft Java Editionにおけるレッドストーン論理およびメカニクスを包括的かつ体系的に整理し、コミュニティへ学術的基盤を提供することを目的とした研究アーカイブです。ソースコードに準拠した厳密な定義に基づき、回路を計算機科学・形式論理学の次元へと昇華させます。</p>
-        </section>
-
-        <h2 style="font-size: 1.4rem; border-left: 4px solid var(--accent-red); padding-left: 0.75rem; margin-bottom: 1.5rem;">論文目録 / 7 Disciplines</h2>
-        
-        <div class="chapter-grid">
-            <!-- 各章へのリンクカード -->
-            <a href="chap1.html" class="chapter-card">
-                <span class="card-meta">DISCIPLINE 01 // RS-ELEMENTS</span>
-                <span class="card-title">Ⅰ 赤石初歩論</span>
-                <span class="card-desc">信号強度、強/弱動力源化の定義、および `/tick` コマンドを用いた環境構築とシグナル接続の原則。</span>
-            </a>
-
-            <a href="chap2.html" class="chapter-card">
-                <span class="card-meta">DISCIPLINE 02 // RS-CHRONOLOGY</span>
-                <span class="chapter-id"></span>
-                <span class="card-title">Ⅱ 赤石時間論</span>
-                <span class="card-desc">ゲームティックと赤石ティックの本質。内部処理フェーズにおける3大コンポーネント（PLC / STC / BEC）の厳密な分類。</span>
-            </a>
-
-            <a href="chap3.html" class="chapter-card">
-                <span class="card-meta">DISCIPLINE 03 // RS-PERFORMANCE</span>
-                <span class="card-title">Ⅲ 赤石負荷論</span>
-                <span class="card-desc">サーバー演算（MSPT）を圧迫する隣接更新オーバーヘッドの正体と、`/debug` を用いたプロファイリング最適化。</span>
-            </a>
-
-            <!-- 未執筆の章はカードのスタイルを変えるか、タグをつける -->
-            <div class="chapter-card" style="opacity: 0.6; cursor: not-allowed;">
-                <span class="card-meta">DISCIPLINE 04 // WIP</span>
-                <span class="card-title">Ⅳ 赤石技術論 <span class="wip-tag">Under Construction</span></span>
-                <span class="card-desc">Coming soon...（各種論理ゲート、予約リスト管理、RSCv3記法の実践）</span>
+    <div class="frout-container">
+        <aside class="frout-sidebar-left">
+            <div style="font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 0.25rem; border-left: 3px solid #e11d48; padding-left: 0.5rem;">
+                FRouT Archive
             </div>
-        </div>
+            <div style="font-family: 'Lora', serif; font-size: 0.75rem; color: #8a99ad; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                NAVIGATION
+            </div>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                <li style="margin-bottom: 0.5rem;">
+                    <a href="index.html" class="frout-link" style="display: block; padding: 0.25rem 0; font-weight: bold;">
+                        ・ 論文目録トップ
+                    </a>
+                </li>
+                <li style="margin-bottom: 0.5rem;">
+                    <a href="chap1.html" class="frout-link" style="display: block; padding: 0.25rem 0;">
+                        ・ Ⅰ 赤石初歩論
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="frout-main-content">
+            <header style="margin-bottom: 4rem; border-bottom: 1px solid #2d2d34; padding-bottom: 2rem;">
+                <span style="font-family: 'Lora', serif; color: #e11d48; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.1em;">
+                    MINECRAFT REDSTONE MECHANICS ARCHIVE
+                </span>
+                <h1 style="font-size: 2.5rem; font-weight: 700; color: #fff; margin-top: 0.5rem; letter-spacing: 0.05em;">
+                    FRouT Web Archive
+                </h1>
+            </header>
+            <section style="margin-bottom: 4rem;">
+                <h2 style="font-size: 1.2rem; color: #fff; margin-bottom: 1rem; font-family: 'Lora', serif;">
+                    Project Assets Status
+                </h2>
+                <table class="frout-table">
+                    <thead>
+                        <tr>
+                            <th>Volume</th>
+                            <th>Technical Document</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-family: 'Lora', serif; font-weight: 600;">
+                                Vol. I
+                            </td>
+                            <td>
+                                <a href="chap1.html" class="frout-link">
+                                    赤石初歩論
+                                </a> 
+                                <span class="frout-tag">I-Sig</span>
+                                <span class="frout-tag">I-Con</span>
+                                <span class="frout-tag">I-Upd</span>
+                            </td>
+                            
+                            <td><span style="color: #f59e0b; font-weight: bold;">
+                                ⏳ In Progress
+                            </span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-family: 'Lora', serif; font-weight: 600;">
+                                Vol. II
+                            </td>
+                            <td>
+                                <a href="#" class="frout-link">
+                                    （次のドキュメント）
+                                </a> 
+                                <span class="frout-tag">
+                                    II-ChGph
+                                </span>
+                            </td>
+                            
+                            <td><span style="color: #8a99ad; font-weight: bold;">
+                                ✕ Unwritten
+                            </span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section style="margin-bottom: 4rem;">
+                <h2 style="font-size: 1.4rem; color: #fff; margin-bottom: 1.5rem; border-left: 3px solid #e11d48; padding-left: 0.75rem;">
+                    論文目録について
+                </h2>
+
+                <p>
+                    当アーカイブは、Minecraft Java Editionにおけるレッドストーン回路の挙動を、論理的かつ体系的に整理・保管するための研究用ウェブサイトです。
+                </p>
+
+                <p>
+                    各要素をフェーズレス（PLC）、スケジュール（STC）、ブロックイベント（BEC）等の処理フェーズに厳密に分類し、ゲーム内エンジンが引き起こすあらゆる現象（バグ、更新順序、時間軸モデル）を体系化することを目指しています。
+                </p>
+            </section>
+
+        </main>
+
+
+        <aside class="frout-sidebar-right">
+            <div style="font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 0.25rem; border-left: 3px solid #e11d48; padding-left: 0.5rem;">
+                Archive Info
+            </div>
+            
+            <div style="font-family: 'Lora', serif; font-size: 0.75rem; color: #8a99ad; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                SPECIFICATIONS
+            </div>
+
+            <p style="font-size: 0.85rem; color: #8a99ad; margin-bottom: 1rem;">
+                <strong>System Version:</strong><br>
+                <span style="font-family: 'JetBrains Mono', monospace; color: #fff;">RSCv3 Standard</span>
+            </p>
+
+            <p style="font-size: 0.85rem; color: #8a99ad; margin-bottom: 1rem;">
+                <strong>Target Edition:</strong><br>
+                <span style="color: #fff;">Java Edition</span>
+            </p>
+            
+            <p style="font-size: 0.85rem; color: #8a99ad;">
+                <strong>Repository:</strong><br>
+                <a href="https://github.com/enokilovin/ArcFrout" class="frout-link" style="font-size: 0.8rem;">enokilovin/ArcFrout</a>
+            </p>
+        </aside>
+
     </div>
+
 </body>
 </html>
