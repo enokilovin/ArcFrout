@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ⅱ 赤石時間論 - 赤石基礎論 | FRouT</title>
+    <!-- Fonts / Styles は前回の「格調高いデザイン」をそのまま継承 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,600;1,400&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSSは前回の美しさを完全維持（長くなるため、基本構造のみここに記載、パーツクラスはそのまま使えます） */
+        :root {
+            --bg-primary: #121214; --bg-secondary: #1a1a1e; --bg-code: #0b0b0d;          
+            --text-main: #e2e8f0; --text-muted: #8a99ad; --accent-red: #e11d48;       
+            --marker-color: rgba(225, 29, 72, 0.32); --font-serif: 'Lora', serif;
+            --font-sans: 'Noto Sans JP', sans-serif; --font-mono: 'JetBrains Mono', monospace; 
+            --sidebar-left-width: 280px; --sidebar-right-width: 250px;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-primary); color: var(--text-main); font-family: var(--font-sans); line-height: 1.85; display: flex; justify-content: center; counter-reset: footnote; }
+        .site-container { display: flex; width: 100%; max-width: 1440px; min-height: 100vh; }
+        
+        /* 左右サイドバーとメイン */
+        .sidebar-left { width: var(--sidebar-left-width); height: 100vh; background-color: var(--bg-secondary); position: sticky; top: 0; padding: 2.5rem 1.25rem; overflow-y: auto; border-right: 1px solid #2d2d34; flex-shrink: 0; }
+        .main-content { flex: 1; max-width: 820px; padding: 3rem 3.5rem; overflow-x: hidden; }
+        .sidebar-right { width: var(--sidebar-right-width); height: 100vh; background-color: var(--bg-secondary); position: sticky; top: 0; padding: 2.5rem 1.25rem; overflow-y: auto; border-left: 1px solid #2d2d34; flex-shrink: 0; }
+        @media (max-width: 1250px) { .sidebar-right { display: none; } }
+        @media (max-width: 900px) { .sidebar-left { display: none; } .main-content { padding: 2rem 1.5rem; } }
+
+        /* ナビゲーション等装飾（前回と同じ） */
+        .sidebar-title { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 0.25rem; border-left: 3px solid var(--accent-red); padding-left: 0.5rem; }
+        .sidebar-subtitle { font-family: var(--font-serif); font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1.5rem; text-transform: uppercase; }
+        .nav-list { list-style: none; } .nav-item { margin-bottom: 0.4rem; }
+        .nav-link { color: var(--text-muted); text-decoration: none; font-size: 0.88rem; display: block; padding: 0.4rem 0.6rem; border-radius: 4px; transition: all 0.2s ease; }
+        .nav-link:hover { color: #fff; background-color: rgba(255, 255, 255, 0.04); }
+        .nav-link.active { color: var(--accent-red); font-weight: 600; background-color: rgba(225, 29, 72, 0.05); }
+        .site-header { margin-bottom: 4rem; border-bottom: 1px solid #2d2d34; padding-bottom: 1.5rem; }
+        h1 { font-size: 2.2rem; font-weight: 700; color: #fff; }
+        .chapter-title { font-size: 1.6rem; color: #fff; margin-top: 2rem; margin-bottom: 1.5rem; padding-bottom: 0.4rem; border-bottom: 2px solid #2d2d34; display: flex; justify-content: space-between; }
+        .chapter-id { font-family: var(--font-serif); color: var(--accent-red); font-size: 1.1rem; }
+        .section-title { font-size: 1.25rem; color: #fff; margin-top: 3rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .section-code { font-family: var(--font-serif); font-size: 0.8rem; background: rgba(225, 29, 72, 0.15); padding: 0.15rem 0.4rem; border-radius: 4px; color: var(--accent-red); }
+        p { margin-bottom: 1.25rem; color: var(--text-main); text-align: justify; }
+        mark { background: linear-gradient(to bottom, transparent 65%, var(--marker-color) 65%); color: inherit; padding: 0 0.15rem; font-weight: 600; }
+        .list-block { background-color: var(--bg-secondary); border-left: 3px solid var(--accent-red); padding: 1.25rem 1.5rem; margin: 1.75rem 0; border-radius: 0 6px 6px 0; }
+        .list-block-title { font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; }
+        .styled-list { list-style: none; } .styled-list li { position: relative; padding-left: 1.25rem; margin-bottom: 0.4rem; font-size: 0.95rem; }
+        .styled-list li::before { content: ""; position: absolute; left: 0.1rem; top: 0.65rem; width: 5px; height: 5px; background-color: var(--accent-red); transform: rotate(45deg); }
+        .academic-term { font-family: var(--font-serif); font-weight: 600; color: #fff; }
+        .back-to-top { display: inline-block; margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--accent-red); text-decoration: none; font-weight: 700; }
+        .back-to-top:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <div class="site-container">
+
+        <!-- 【左カラム】条件②：この章の大枠目次 ＆ トップへ戻るナビ -->
+        <aside class="sidebar-left">
+            <!-- 戻るリンクを追加 -->
+            <a href="index.html" class="back-to-top">← 論文目録（トップ）に戻る</a>
+            
+            <div class="sidebar-title">Ⅱ 赤石時間論</div>
+            <div class="sidebar-subtitle">RS-CHRONOLOGY</div>
+            <nav>
+                <ul class="nav-list">
+                    <!-- 左側は、この章の中の大きなトピックへのアンカー -->
+                    <li class="nav-item"><a href="#overview" class="nav-link">章の概要</a></li>
+                    <li class="nav-item"><a href="#tick-theory" class="nav-link">1. ティック理論</a></li>
+                    <li class="nav-item"><a href="#components" class="nav-link">2. 3大コンポーネント</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- 【中央カラム】本文エリア（第Ⅱ章の内容だけが入るため超軽量！） -->
+        <main class="main-content">
+            
+            <header class="site-header">
+                <span style="font-family: var(--font-serif); color: var(--accent-red); font-weight:600;">DISCIPLINE 02</span>
+                <h1 style="margin-top: 0.25rem;">Ⅱ 赤石時間论</h1>
+            </header>
+
+            <section id="overview">
+                <p>本章では、赤石回路の駆動順序（更新順序）を支配する時間概念、および内部処理フェーズにおけるコンポーネント特性を厳密に体系化します。</p>
+            </section>
+
+            <!-- 大きなまとまり1 -->
+            <section id="tick-theory">
+                <h2 class="chapter-title"><span>1. ティック理論</span><span class="chapter-id">TICK THEORY</span></h2>
+                
+                <h3 class="section-title" id="sec2-1">
+                    <span>ゲームティック (gt)</span>
+                    <span class="section-code">II-Gt</span>
+                </h3>
+                <p>Minecraft Java Editionの根底を流れる最小の時間単位は、1秒間に20回実行される <mark>ゲームティック（Game Tick / gt）</mark> です。<span class="academic-term">1 gt = 0.05秒</span> であり、この内部は複数の処理フェーズに細分化されています。</p>
+
+                <h3 class="section-title" id="sec2-2">
+                    <span>レッドストーンティック (rt)</span>
+                    <span class="section-code">II-Rt</span>
+                </h3>
+                <p>リピーターやトーチなどの遅延要素は、2ゲームティックを基準とする <mark>レッドストーンティック（Redstone Tick / rt）</mark> を基準に動作します。<span class="academic-term">1 rt = 2 gt = 0.1秒</span> です。</p>
+            </section>
+
+            <!-- 大きなまとまり2 -->
+            <section id="components">
+                <h2 class="chapter-title"><span>2. 3大コンポーネント分類</span><span class="chapter-id">COMPONENTS</span></h2>
+                
+                <h3 class="section-title" id="sec2-3">
+                    <span>PLC / STC / BEC 定義</span>
+                    <span class="section-code">II-Cmp</span>
+                </h3>
+                <p>赤石素子はその処理フェーズによって、以下の3つに厳密に分類・定義されます。</p>
+
+                <div class="list-block">
+                    <div class="list-block-title">FRouT 素子分類</div>
+                    <ul class="styled-list">
+                        <li><strong>PLC (Phaseless Component)</strong>：遅延を挟まず、その場で即時に信号を伝播。</li>
+                        <li><strong>STC (Schedule Tick Component)</strong>：指定gt経過後の「Scheduled Ticks フェーズ」で駆動。</li>
+                        <li><strong>BEC (Block Event Component)</strong>：最終盤の「Block Events フェーズ」でイベントを処理。</li>
+                    </ul>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- 【右カラム】条件②：開いている文書の「各節の詳細目次」 -->
+        <aside class="sidebar-right">
+            <div class="sidebar-title">この章の節</div>
+            <div class="sidebar-subtitle">In This Chapter</div>
+            <nav>
+                <ul class="nav-list" id="detail-toc">
+                    <li><a href="#sec2-1" class="nav-link">・ II-Gt: ゲームティック</a></li>
+                    <li><a href="#sec2-2" class="nav-link">・ II-Rt: 赤石ティック</a></li>
+                    <li><a href="#sec2-3" class="nav-link">・ II-Cmp: 3大分類</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+    </div>
+
+    <!-- スクロール連動JavaScript（前回同様） -->
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = { root: null, rootMargin: '-10% 0px -70% 0px', threshold: 0 };
+            const links = document.querySelectorAll('#detail-toc .nav-link');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        links.forEach(link => {
+                            if (link.getAttribute('href') === `#${id}`) { link.classList.add('active'); } 
+                            else { link.classList.remove('active'); }
+                        });
+                    }
+                });
+            }, observerOptions);
+            document.querySelectorAll('.main-content h3').forEach(h3 => { observer.observe(h3); });
+        });
+    </script>
+</body>
+</html>
