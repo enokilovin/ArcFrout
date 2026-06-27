@@ -3,86 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discord サーバーゲート</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <title>Invitation!</title>
     <style>
-        /* 共通スタイル：マイクラのダークな世界観を意識 */
         body { 
-            font-family: 'Helvetica Neue', Arial, sans-serif; 
+            font-family: 'Times New Roman', serif; 
             text-align: center; 
-            padding: 80px 20px; 
-            background-color: #121212; 
-            color: #e0e0e0; 
+            padding: 80px; 
+            color: #fff; 
             margin: 0;
         }
         .container { 
-            max-width: 460px; 
+            max-width: 480px; 
             margin: 0 auto; 
-            background: #1e1e1e; 
-            padding: 40px 30px; 
-            border-radius: 12px; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5); 
-            border: 2px solid #333333; 
-            transition: border-color 0.3s ease;
-        }
-        /* スパム警告用のアクセントカラー */
-        .container.border-red {
-            border-color: #ff4747;
-        }
-        h2 { 
-            color: #ff4747; 
-            margin-top: 0; 
-            font-size: 1.6rem; 
-            letter-spacing: 1px;
-        }
-        .desc {
-            font-size: 0.95rem;
-            color: #aaaaaa;
-            line-height: 1.6;
-        }
-        /* クイズボックスの装飾 */
-        .quiz-box { 
-            background: #151515; 
-            padding: 20px; 
-            border-radius: 8px; 
-            margin: 25px 0; 
-            border-left: 4px solid #ff4747;
-            text-align: left;
-        }
-        .quiz-question {
-            font-family: 'Courier New', Courier, monospace;
             font-size: 1.2rem;
+            color: #333;
+            line-height: 2;
+        }
+        .quiz-box { 
+            background: #333; 
+            padding: 40px; 
+            margin: 25px 0; 
+            font-size: 1.4rem;
             font-weight: bold;
-            color: #ffffff;
-            word-spacing: 2px;
-            display: block;
-            margin-top: 8px;
-            text-align: center;
+            color: #fff;
+            letter-spacing: 1rem;
+            border-radius: 6px;
         }
         .input-area { 
-            margin-top: 20px; 
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 25px;
         }
         input[type="number"] { 
             width: 90px; 
             padding: 12px; 
-            font-size: 1.2rem; 
+            font-size: 1rem; 
             border-radius: 6px; 
-            border: 2px solid #444; 
-            background: #0a0a0a; 
-            color: #fff; 
+            border: 2px solid #ddd; 
             text-align: center; 
             outline: none;
         }
         input[type="number"]:focus {
-            border-color: #ff4747;
+            border-color: #666;
         }
         button { 
             padding: 0 24px; 
             font-size: 1rem; 
-            background-color: #ff4747; 
-            color: white; 
+            background-color: #56f; 
+            color: #fff; 
             border: none; 
             border-radius: 6px; 
             cursor: pointer; 
@@ -90,113 +59,69 @@
             transition: background-color 0.2s;
         }
         button:hover { 
-            background-color: #e03636; 
+            background-color: #45c; 
         }
-        /* Discordボタンの装飾 */
-        .btn-discord { 
-            display: inline-block; 
-            padding: 16px 32px; 
-            background-color: #5865F2; 
-            color: white; 
-            text-decoration: none; 
-            border-radius: 6px; 
-            font-weight: bold; 
-            margin-top: 15px; 
-            font-size: 1.1rem;
-            box-shadow: 0 4px 12px rgba(88, 101, 242, 0.3); 
-            transition: background-color 0.2s, transform 0.1s;
-        }
-        .btn-discord:hover { 
-            background-color: #4752c4; 
-            transform: translateY(-1px);
-        }
-        /* 表示・非表示の切り替えクラス */
         .hidden { 
             display: none; 
         }
         .error-msg { 
-            color: #ff6b6b; 
-            font-size: 0.9rem; 
-            margin-top: 12px; 
+            color: #f56; 
+            font-size: 1rem; 
+            margin-top: 18px; 
             font-weight: bold;
         }
         .success-msg {
-            color: #4cc9f0; 
+            color: #56F; 
             font-weight: bold; 
             font-size: 1.3rem;
-            margin-bottom: 10px;
+            letter-spacing: 0.05rem;
+            margin-top: 25px;
         }
     </style>
 </head>
 <body>
 
-<div class="container border-red" id="main-card">
-    <h2>🔒 SECURITY CHECK</h2>
-    <p class="desc">スパムbotの自動進入を防ぐため、以下のクイズ（文字数）に半角数字で答えてください。</p>
+<div class="container" id="main-card">
+    <p id="desc">To block spam bots, please count the letters below and enter the number.（文字数を数えて入力してください。）</p>
     
     <div id="quiz-area">
         <div class="quiz-box">
-            <strong style="color: #ff4747;">Q. Please count the letters:</strong>
-            <span class="quiz-question">"REDSTONE"</span>
+            <span style="margin-left: 1rem;">REDSTONE</span>
         </div>
         <div class="input-area">
-            <input type="number" id="answer" placeholder="数字" min="0" max="999">
-            <button onclick="checkAnswer()">認証</button>
+            <input type="number" id="answer" placeholder="Number" min="0" max="99">
+            <button onclick="checkAnswer()">Enter</button>
         </div>
-        <p id="error" class="error-msg hidden">❌ Please count again!</p>
+        <p id="error" class="error-msg hidden">Please enter the correct number.（再入力してください。）</p>
     </div>
 
     <div id="link-area" class="hidden">
-        <p class="success-msg">🎉 認証に成功しました！</p>
-        <p class="desc" style="margin-bottom: 25px;">Success!</p>
-        
-        <a href="#" id="discord-link" class="btn-discord" target="_blank">Join Frout</a>
+        <p class="success-msg">✨ Redirecting to Discord...</p>
     </div>
 </div>
 
 <script>
 function checkAnswer() {
-    const userAnswer = document.getElementById('answer').value;
+    const input = document.getElementById('answer');
     const errorMsg = document.getElementById('error');
-    const quizArea = document.getElementById('quiz-area');
-    const linkArea = document.getElementById('link-area');
-    const mainCard = document.getElementById('main-card');
     
-    // 正解は「8」 (R-E-D-S-T-O-N-E)
-    if (userAnswer === '8') {
+    if (input.value === '8') {
         errorMsg.classList.add('hidden');
-        quizArea.classList.add('hidden');
-        mainCard.classList.remove('border-red');
-        linkArea.classList.remove('hidden');
+        document.getElementById('quiz-area').classList.add('hidden');
+        document.getElementById('desc').classList.add('hidden');
+        document.getElementById('link-area').classList.remove('hidden');
 
-        // ====================================================
-        // 🔒 スパムbot対策：URLの難読化（分割結合）
-        // ====================================================
-        const protocol = "https://";
-        const domain = "discord." + "gg/";
-        
-        // ⚠️【設定】ダブルクォーテーションの中に、あなたの招待コードの末尾を入れてください
-        // 例: 招待URLが https://discord.gg/abc1234 なら、"abc1234" と書きます。
         const code = "GaNPpqv"; 
-        
-        // 正解したこの瞬間にだけ、文字列を合体させてリンクを完成させる
-        document.getElementById('discord-link').href = protocol + domain + code;
-
+        window.location.href = "https://" + "discord." + "gg/" + code;
     } else {
         errorMsg.classList.remove('hidden');
-        // 間違えたら入力欄をリセットしてフォーカス
-        document.getElementById('answer').value = '';
-        document.getElementById('answer').focus();
+        input.value = '';
+        input.focus();
     }
 }
-
-// Enterキーでも送信できるようにする親切設計
-document.getElementById('answer').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-        checkAnswer();
-    }
+document.getElementById('answer').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') checkAnswer();
 });
 </script>
-
 </body>
 </html>
