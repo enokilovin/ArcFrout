@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>赤石基礎論｜Frout</title>
+    <link rel="stylesheet" href="frout-style.css">
+    <script src="frout-script.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <h1>赤石基礎論｜赤石にまつわる普遍学</h1>
+        <p>—— FRouT：Fundamental <strong>Redstone Theory</strong> in <strong>Minecraft</strong> Java</p>
+    </header>
+
+    <section>
+        <h2 id="basic-concept">根本理念｜BASIC CONCEPT</h2>
+        <div class="frout-list">
+            <div>4 CONCEPTS</div>
+            <ol>
+                <li><strong>赤石コミュニティの基礎底上げ</strong>
+                    <ul>
+                        <li>赤石の仕様にまつわる「暗黙知」を明らかにします。その知識を、実践的または理論的な視点から理解することで「赤石界の発展」に尽力します。</li>
+                    </ul>
+                </li>
+                <li><strong>一般向け解説資料の補足・訂正・根拠の明示</strong>
+                    <ul>
+                        <li>WEB上には<a href="https://minecraft.wiki/" target="_blank" rel="noopener noreferrer">Minecraft Wiki</a>に代表される解説資料が無数にあります。意識的または無意識的にカットされている内容を浮き彫りにして「知識の是正」を試みます。</li>
+                    </ul>
+                </li>
+                <li><strong>分野横断的かつ体系的な内容整理</strong>
+                    <ul>
+                        <li>赤石にまつわる知識は無数にあり、その知識の応用先も数多くあります。断片的ではなく横断的に参照できるよう資料を体系化することで「知識の拡大」に取り組みます。</li>
+                    </ul>
+                </li>
+                <li><strong>共著による専門性の向上</strong>
+                    <ul>
+                        <li>主宰者（@enokilovin）によって権限を与えられた有志たちは、記事の作成・編集・公開ができるようになります。それぞれ専門領域をもつ有志によって「知識の深化」がもたらされます。</li>
+                        <li>ただし、権限の付与対象は主宰者の独断に委ねられていますので、その点はご了承ください。情報の補足や誤情報に対する指摘など、<a href="https://github.com/enokilovin/arcfrout/issues" target="_blank" rel="noopener noreferrer">GitHub Issues</a>で気兼ねなくフィードバックしていただけると幸いです！</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
+        <h2 id="7-disciplines">赤石七科｜RS-DISCIPLINE</h2>
+        <div class="frout-list">
+            <div>7 DISCIPLINES</div>
+            <ol>
+                <li><a href="#rs-elm"><span class="badge-xref">RS-ELM</span></a>赤石初歩論｜赤石を始めるために</li>
+                <li><a href="#rs-chl"><span class="badge-xref">RS-CHL</span></a>赤石時間論｜赤石動作原理の解析</li>
+                <li><a href="#rs-eff"><span class="badge-xref">RS-EFF</span></a>赤石負荷論｜赤石の負荷をめぐる考察</li>
+                <li><a href="#rs-tec"><span class="badge-xref">RS-TEC</span></a>赤石技術論｜理論的な知識から実践へ</li>
+                <li><a href="#rs-log"><span class="badge-xref">RS-LOG</span></a>形式論理学｜赤石論理回路の基本知識</li>
+                <li><a href="#rs-com"><span class="badge-xref">RS-COM</span></a>計算機科学｜赤石論理回路の応用実践</li>
+                <li><a href="#rs-arc"><span class="badge-xref">RS-ARC</span></a>赤石小事典｜赤石にまつわる資料集</li>
+            </ol>
+        </div>
+
+        <h3 id="rs-elm">Ⅰ 赤石初歩論｜RS-ELEMENTS（Chap.I）</h3>
+        <p><mark>赤石の基本仕様と環境構築にまつわる初等知識</mark>—— 赤石回路を構成する要素（信号や隣接更新など）について広く浅く確認します。初心者がつまずきやすい赤石の謎（例外的な挙動＝バグ）にも触れながら、赤石を遊び尽くすための環境構築も学びます。</p>
+        <div class="frout-accordion">
+            <details>
+                <summary><span class="badge-xref">I-Sig</span>信号 ( SIGNAL )</summary>
+                <p>赤石の信号について、ON/OFFの概念や信号強度、動力源化と活性化の違いといった視点から眺めます。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">I-Con</span>信号接続 ( SIGNAL CONNECTION )</summary>
+                <p>信号の伝わり方について、直接的または間接的な接続方法の違いを理解します。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">I-Upd</span>隣接更新 ( NEIGHBOR UPDATE )</summary>
+                <p>ブロックの状態変化がまわりに伝播する「アップデート」の仕組みを紐解きます。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">I-Cat</span>赤石素子分類 ( RS-COMPONENT CATEGORIES )</summary>
+                <p>ブロックの性質にもとづいて赤石素子を分類します。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">I-Cpt</span>赤石素子 ( RS-COMPONENTS )</summary>
+                <p>リピーターやピストンなどの赤石素子にまつわる個別仕様をまとめます。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">I-Mys</span>赤石の謎 ( RS-MYSTERIES )</summary>
+                <p>方角依存、準接続、透過ブロックの挙動など、直感に反する仕様について理解することで、実践的な力を身につけます。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">I-Cmd</span>コマンド ( COMMANDS )</summary>
+                <p>赤石回路の開発やその検証に役立つ必須コマンドを紹介します。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">I-Env</span>環境構築 ( ENVIRONMENT SETUP )</summary>
+                <p>赤石用ワールドの構築からルール設定まで把握して、開発に最適な環境を整えます。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">I-Mod</span>MOD ( MODIFICATIONS )</summary>
+                <p>Carpet, Litematica, MiniHUDなど、赤石の開発と検証を最大限補助するMODについて紹介します。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">I-Rsp</span>リソースパック ( RESOURCE-PACKS )</summary>
+                <p>信号強度の可視化やブロックの設置方向の判別など、視認性を上げて開発効率を高めるリソースパックについて紹介します。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">I-Sns</span>SNS ( SOCIAL NETWORKING SERVICES )</summary>
+                <p>国内外の赤石コミュニティを知り、情報を収集して、知見を共有する方法についてまとめています。</p>
+            </details>
+        </div>
+
+        <h3 id="rs-chl">Ⅱ 赤石時間論｜RS-CHRONOLOGY（Chap.II）</h3>
+        <p><mark>赤石の処理順と更新順序にまつわる理論</mark>—— 赤石の挙動を「ゲームティック」という時間単位で捉え、処理順序・更新順序を軸にした「動作順の解析」を試みます。同じ回路でも配置や向きによって挙動が変わる場合がある理由、その説明のために処理順序などを書き下すための記述法について確かめます。</p>
+        <div class="frout-accordion">
+            <details>
+                <summary><span class="badge-xref">II-Gtick</span>ゲームティック ( GAMETICK )</summary>
+                <p>時間の基本単位であるゲームティック（gt）について、リアルタイムとの違いや各フェーズなどに触れながら理解を深めます。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">II-PrOrd</span>処理順序 ( PROCESSING ORDER )</summary>
+                <p>同一ティック内における各処理フェーズ（PI, ST, BE, EN, TE）の実行サイクルを詳述します。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">II-UpOrd</span>更新順序 ( UPDATE ORDER )</summary>
+                <p>同一フェーズ内で複数のブロックが同時に動くとき、何が優先されるかをアップデートの順序という視点から眺めます。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">II-Direc</span>方角依存性 ( DIRECTIONALITY )</summary>
+                <p>「装置を90度回転すると故障する」といった方角にまつわる動作模様の違いとその対処法を、アップデートの送受信から紐解きます。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">II-Locat</span>座標依存性 ( LOCATIONALITY )</summary>
+                <p>「装置の場所を移すと故障する」といった位置座標にまつわる動作模様の違いとその対処法を、HashSetという仕組みから紐解きます。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">II-ChGph</span>赤石記述法 ( RS-CHRONOGRAPHY )</summary>
+                <p>複雑な処理順や更新順を正確に言語化（可視化）するために考案された、タイムライン形式での専用記法「RSC」を紹介します。</p>
+            </details>
+        </div>
+
+        <h3 id="rs-eff">Ⅲ 赤石負荷論｜RS-EFFISCIENCE（Chap.III）</h3>
+        <p><mark>実負荷とその軽減にまつわる理論</mark>—— 赤石系の処理とその負荷を「ロード／ラグ」の視点から眺めます。クライアントの負荷とサーバーの負荷を区別しながら、それぞれ適切な計測法をもちいて負荷を数値化・比較・最適化するまで考えます。サバイバルを快適に過ごすためにも重要です。</p>
+        <div class="frout-accordion">
+            <details>
+                <summary><span class="badge-xref">III-LdLg</span>ロード / ラグ ( LOAD / LAG )</summary>
+                <p>負荷の分類から始めて、それぞれの負荷の影響（ラグ）や計測法について理解します。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">III-InLd</span>内的負荷要因 ( INTERNAL LOAD )</summary>
+                <p>赤石素子、光や音、チャンクにまつわる処理など、ワールド内部で発生する処理の負荷要因を探ります。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">III-ExLd</span>外的負荷要因 ( EXTERNAL LOAD )</summary>
+                <p>オートセーブ、バージョンの違い、MODの有無など、ワールド外部で起こりうる処理の負荷要因を探ります。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">III-CltLg</span>クライアント負荷計測法 ( CLIENT-LAG )</summary>
+                <p>画面のレンダリングやパーティクル処理などがクライアント側に与える負荷を計測します。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">III-SrvLg</span>サーバー負荷計測法 ( SERVER-LAG )</summary>
+                <p>アップデート送信数や信号源探索、形状変化、当たり判定の変化などがサーバー側に与える負荷を計測します。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">III-LgCom</span>負荷比較 ( LAG COMPARISON )</summary>
+                <p>さまざまな負荷を各素子や各環境のレベルで比較してまとめることで、次の負荷軽減法に繋げていきます。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">III-LgOpt</span>負荷軽減法 ( LAG OPTIMIZATION )</summary>
+                <p>以上の検証にもとづき素子の置き換えやMODを用いるなどして、総合的な負荷軽減策を提案します。</p>
+            </details>
+        </div>
+
+        <h3 id="rs-tec">Ⅳ 赤石技術論｜RS-TECHNOLOGY（Chap.IV）</h3>
+        <p><mark>赤石技術にまつわる理論と実践</mark>—— 赤石回路の設計法から始まり、無遅延通信やストレージ技術などの「応用体系」をまとめます。あわせて「なぜこの技術が可能なのか」を理論的な視点から考えることで、装置が故障した場合の対処法をみずから考えられるようになります。</p>
+        <div class="frout-accordion">
+            <details>
+                <summary><span class="badge-xref">IV-Arch</span>赤石回路設計法 ( RS-ARCHITECTURE )</summary>
+                <p>赤石回路設計における小型化、高速化、並列化、サバイバルでの壊れにくさ、動作デバッグの手法などをまとめています。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">IV-InsCm</span>無遅延通信 ( INSTANT COMMUNICATION )</summary>
+                <p>リピーター、レール、コンパレーターなどを利用して、信号を無遅延で（瞬時に）伝える技術について解説します。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">IV-WlsCm</span>無線通信 ( WIRELESS COMMUNICATION )</summary>
+                <p>日照センサーやアイテムエンティティ等を利用したワイヤレス通信法について解説します。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">IV-Supr</span>サプレッション ( SUPPRESSION )</summary>
+                <p>アップデートのサプレッションやスキップなど、ゲームの更新処理を意図的に抑制・遮断する高度な技術を扱います。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">IV-ChLd</span>チャンクローディング ( CHUNK LOADING )</summary>
+                <p>特定回路をつねに動作させるためのチャンク読み込み維持技術について理解を深めます。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">IV-PiTch</span>ピストン応用技術 ( PISTON TECH )</summary>
+                <p>自動ドア、エレベーター、フライングマシン、ピストンボルトなどのピストンにまつわる応用技術について紹介します。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">IV-EnTch</span>エンティティ応用技術 ( ENTITY TECH )</summary>
+                <p>レール増殖やTNT増殖、TNTキャノンや3Dディスプレイなどのエンティティにまつわる応用技術を紹介します。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">IV-Strg</span>ストレージ技術 ( STORAGE TECH )</summary>
+                <p>水流、ホッパー、ドロッパー、論理回路などを複合的に組み合わせた、高度なアイテム輸送・保管技術を紹介します。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">IV-Maze</span>迷路生成 ( MAZE GENERATOR )</summary>
+                <p>赤石回路のみでアルゴリズムを処理し、自動で迷路を生成する回路の仕組みを明らかにします。</p>
+            </details>
+        </div>
+
+        <h3 id="rs-log">Ⅴ 形式論理学｜FORMAL RS-LOGIC（Chap.V）</h3>
+        <p><mark>論理回路にまつわる初等知識</mark>—— 赤石回路を「論理回路」の視点から眺めます。数の表現（十進法や二進法など）を学びながら、マインクラフトの世界で記憶装置をつくる方法や、加減乗除の計算がどうすれば可能になるか等々について考えます。</p>
+        <div class="frout-accordion">
+            <details>
+                <summary><span class="badge-xref">V-Pvs</span> 位取り記数法 ( PVS; PLACE VALUE SYSTEM )</summary>
+                <p>赤石で「数」を扱うために、2進数、10進数、16進数、2進化10進数（BCD）の表現方法を学びます。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">V-Bool</span>ブール論理 ( BOOLEAN LOGIC )</summary>
+                <p>真と偽という論理の世界を「数」の世界に繋ぎ合わせる、論理演算の基礎を扱います。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">V-LogOp</span>論理演算 ( LOGICAL OPERATION )</summary>
+                <p>組み合わせ論理（AND, OR, NOTなど）による演算と、順序論理による記憶の仕組みを解説します。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">V-ArtOp</span>算術演算 ( ARITHMETIC OPERATION )</summary>
+                <p>加減乗除を赤石で実現する方法や、実数の表現方法を紹介します。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">V-Gray</span>グレイコード ( GRAY CODE )</summary>
+                <p>エラーに強い符号化技術の概要を学びます。</p>
+            </details>
+        </div>
+
+        <h3 id="rs-com">Ⅵ 計算機科学｜RS-COMPUTER SCIENCE（Chap.VI）</h3>
+        <p><mark>赤石論理回路にまつわる発展知識</mark>—— 複雑な計算機をつくるために、それを構成するさまざまな回路について学びます。エンコーダ、デコーダ、カウンタ、メモリ、ディスプレイなどを組み立てて、数の入力・計算・表示までの道のりを示します。</p>
+        <div class="frout-accordion">
+            <details>
+                <summary><span class="badge-xref">VI-Trans</span>信号伝達 ( SIGNAL TRANSMISSION )</summary>
+                <p>各数値表現、各パルス長、直列並列、無遅延の信号伝達などについて理解を深めます。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">VI-EnDec</span>エンコーダ / デコーダ ( ENCODER / DECODER )</summary>
+                <p>データの圧縮や復元、相互変換などをおこなう回路を設計します。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">VI-Count</span>カウンタ ( COUNTER )</summary>
+                <p>パルスを検出するたびに、内部の数値を1ずつ加算・維持する回路を設計します。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">VI-Mem</span> 4. メモリ ( MEMORY )</summary>
+                <p>データを一時的あるいは永続的に保持する記憶装置を設計します。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">VI-ShReg</span>シフトレジスタ ( SHIFT REGISTER )</summary>
+                <p>データを一定方向にシフトさせる記憶装置を設計します。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">VI-Disp</span>ディスプレイ ( DISPLAY )</summary>
+                <p>7セグメント、16セグメント、ビットマップによるデータのディスプレイ装置を設計します。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">VI-Bcd</span>BCD変換器 ( BCD CONVERTER )</summary>
+                <p>計算しやすい2進数と、ディスプレイに表示しやすい10進数、この中間にある「2進化10進数（BCD）」にデータを変換する装置を設計します。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">VI-Add</span>加算器 ( ADDER )</summary>
+                <p>赤石で「加算」を実現するための半加算器や全加算器を知ったうえで、CLAやCCAなどの計算高速化技術を学びます。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">VI-Subt</span>減算器 ( SUBTRACTOR )</summary>
+                <p>補数表現などを利用して、加算器をベースに減算を実現する回路を設計します。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">VI-Mult</span>乗算器 ( MULTIPLIER )</summary>
+                <p>加算の反復やシフト演算によって、赤石で乗算を実現します。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">VI-Div</span>除算器 ( DIVIDER )</summary>
+                <p>減算の反復やシフト演算によって、赤石で除算を実現します。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">VI-Alu</span>算術論理演算装置 ( ALU; ARITHMETIC LOGIC UNIT )</summary>
+                <p>さまざまな演算を総合的に処理する、計算機の中枢を構築します。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">VI-InsTh</span>無遅延理論 ( INSTANT THEORY )</summary>
+                <p>無遅延計算機の仕組みを理解します。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">VI-Misc</span>その他 ( MISC )</summary>
+                <p>その他、計算機科学のカテゴリに属する応用回路をまとめます。</p>
+            </details>
+        </div>
+
+        <h3 id="rs-arc">Ⅶ 赤石小事典｜RS-ARCHIVES（Chap.VII）</h3>
+        <p><mark>赤石大系：歴史・術語集・資料</mark>—— 理論や技術の「体系的な参照元」として、赤石の歴史・術語集・ソースコードなどを集約します。赤石基礎論のデータベースの役割も担います。共同執筆のための指針もまとめておきます。</p>
+        <div class="frout-accordion">
+            <details>
+                <summary><span class="badge-xref">VII-ComHs</span>赤石比較史 ( RS COMPARATIVE HISTORY )</summary>
+                <p>Java版と統合版の仕様差異（パリティ）や、バージョン移行にともなう歴史の変遷、世界各国の赤石情勢を扱います。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">VII-DisHs</span>赤石発見史 ( RS DISCOVERY HISTORY )</summary>
+                <p>無線通信などの歴史的な技術が発見された経緯をまとめています。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">VII-Glos</span>術語集 ( GLOSSARY )</summary>
+                <p>赤石界隈で登場する用語の定義、訳語の索引や略語の対応表もまとめる辞書です。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">VII-Bug</span>バグ一覧 ( BUG REGISTRY )</summary>
+                <p>開発するうえで知っておくべき「例外的仕様」をまとめます。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">VII-Code</span>ソースコード ( SOURCE CODE )</summary>
+                <p>ゲーム内コードの解析方法やその注意点をまとめます。</p>
+            </details>
+            <details>
+                <summary><span class="badge-xref">VII-Bench</span>負荷比較表 ( LAG BENCHMARKS )</summary>
+                <p>赤石素子の負荷を測定、一覧化したベンチマーク資料です。</p>
+            </details>
+        </div>
+    </section>
+
+    <section>
+        <h2 id="changelog">CHANGELOG｜26f0628</h2>
+        <div class="frout-list">
+            <div>I-VII</div>
+            <ol>
+                <li><a href="#rs-elm"><span class="badge-xref">RS-ELM</span></a>赤石初歩論
+                    <ul>
+                        <li>・・・</li>
+                    </ul>
+                </li>
+                <li><a href="#rs-chl"><span class="badge-xref">RS-CHL</span></a>赤石時間論
+                    <ul>
+                        <li>タイルティック草稿 > II-PrOrd.02</li>
+                        <li>座標依存 > II-Locat</li>
+                        <li>赤石記述法 > II-ChGph の位置精査（最初？）</li>
+                        <li>tile-tick-prescheduling / block-event-overscheduling?</li>
+                    </ul>
+                </li>
+                <li><a href="#rs-eff"><span class="badge-xref">RS-EFF</span></a>赤石負荷論
+                    <ul>
+                        <li>RSダスト負荷docs・同期ズレの問題？ > III-LgCom.02, III-LgOpt.02</li>
+                        <li>ラグ検査項目 > III-Cltlg（レンダリング、パーティクル、光音処理？）</li>
+                    </ul>
+                </li>
+                <li><a href="#rs-tec"><span class="badge-xref">RS-TEC</span></a>赤石技術論
+                    <ul>
+                        <li>・・・</li>
+                    </ul>
+                </li>
+                <li><a href="#rs-log"><span class="badge-xref">RS-LOG</span></a>形式論理学
+                    <ul>
+                        <li>・・・</li>
+                    </ul>
+                </li>
+                <li><a href="#rs-com"><span class="badge-xref">RS-COM</span></a>計算機科学
+                    <ul>
+                        <li>パイプライン処理の概念 > VI-??</li>
+                        <li>命令セットアーキテクチャ > VI-??</li>
+                        <li>ストレージ階層 > VI-??（メモリ、レジスタ、キャッシュ、バルク…）</li>
+                        <li>項目追加 > VI-??（マルチプレクサ、比較器、バレルシフタ…）</li>
+                    </ul>
+                </li>
+                <li><a href="#rs-arc"><span class="badge-xref">RS-ARC</span></a>赤石小事典
+                    <ul>
+                        <li>章依存関係の可視化 > VII-??（読む順番、前提知識）</li>
+                    </ul>
+                </li>
+                <li><span class="badge-xref">MISC</span>その他
+                    <ul>
+                        <li>NotebookLM = FroutBot?</li>
+                        <li>相互参照の整備</li>
+                        <li>記法統一（X対比Y, X別称Z, JPN(EN)...）</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+
+</body>
+</html>
