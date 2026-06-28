@@ -3,10 +3,9 @@ Archive of Fundamental Redstone Theory in Minecraft Java
 
 
 # **赤石基礎論** [`Frout↗`](https://enokilovin.github.io/ArcFrout/)
-* [`Discord`](https://enokilovin.github.io/ArcFrout/invitation)
+* [`Discord`](https://enokilovin.github.io/ArcFrout/misc/invitation)
 
 
-
-## **更新履歴**
+## **ChangeLog**
 * `2026.05.20` **ArcFrout** 作成
-* `2026.06.28` **github pages** 作成
+* `2026.06.28` **GitHub Pages** 作成
