@@ -1,0 +1,54 @@
+:root {
+    /* Red-Dark: Brand-Primary */
+    --color-red-dark: hsl(340, 100%, 25%);
+        --text-red-dark: var(--color-red-dark);
+        --background-red-dark: var(--color-red-dark);
+        --border-red-dark: 1px solid var(--color-red-dark);
+
+    /* Red-Light: Brand-Secondary */
+    --color-red-light: hsl(340, 100%, 97%);
+        --background-red-light: var(--color-red-light);
+        --border-red-light: 1px solid var(--color-red-light);
+        --box-shadow-red-light: 3px 3px 0px var(--color-red-light);
+        --text-shadow-red-light: 1px 1px 0px var(--color-red-light);
+
+    /*  Purple-dark */
+    --color-purple-dark: hsl(290, 100%, 35%);
+        --text-purple-dark: var(--color-purple-dark);
+
+    /* Blue */
+    --color-blue: hsl(260, 100%, 50%);
+        --text-blue: var(--color-blue);
+
+    /* White */
+    --color-white: hsl(340, 1%, 100%);
+        --text-white: var(--color-white);
+        --background-white: var(--color-white);
+
+    /* Gray-Light */
+    --color-gray-light: hsl(340, 1%, 98%);
+        --background-gray-light: var(--color-gray-light);
+        --border-gray-light: 1px solid var(--color-gray-light);
+
+    /*  Gray-Medium */
+    --color-gray-medium: hsl(340, 1%, 50%);
+        --text-gray-medium: var(--color-gray-medium);
+        --border-gray-medium: 1px solid var(--color-gray-medium);
+
+    /*  Gray-Dark */
+    --color-gray-dark: hsl(340, 1%, 25%);
+        --text-gray-dark: var(--color-gray-dark);
+        --background-gray-dark: var(--color-gray-dark);
+
+    /* Black */
+    --color-black: hsl(340, 1%, 0%);
+        --background-black: var(--color-black);
+
+    /* Border */
+    --border-radius: 3px;
+
+    /* Transition */
+    --ease-std:   all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --ease-micro: all 0.15s ease-out;
+    --translate: translate(-1px, -2px);
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitation!</title>
+    <link rel="shortcut icon" href="../image/favicon.ico">
+    <link rel="stylesheet" href="../css/frout-style_inv.css">
+    <script src="../js/frout-script_inv.js" defer></script>
+</head>
+<body>
+
+<div class="container" id="main-card">
+    <p id="desc">To block spam bots, please count the letters below and enter the number.（文字数を数えて入力してください。）</p>
+    
+    <div id="quiz-area">
+        <div class="quiz-box">
+            <p>REDSTONE</p>
+        </div>
+        <div class="input-area">
+            <input type="number" id="answer" placeholder="Number" min="0" max="99">
+            <button onclick="checkAnswer()">Enter</button>
+        </div>
+        <p id="error" class="error-msg hidden">Please enter the correct number.（再入力してください。）</p>
+    </div>
+
+    <div id="link-area" class="hidden">
+        <p class="success-msg">✨ Redirecting to Discord...</p>
+    </div>
+</div>
+
+</body>
+</html>

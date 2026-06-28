@@ -1,0 +1,158 @@
+/* ==========================================================================
+   3. 自動組み立て用：3カラム基本レイアウト
+   ========================================================================== */
+
+/* --- 3-1. 全体・ベース設定 --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+[id] {
+    scroll-margin-top: 2.5rem;
+}
+
+.site-container {
+    display: flex;
+    width: 100%;
+    max-width: 1380px;
+    min-height: 100vh;
+    margin: 0 auto;
+}
+
+
+/* --- 3-2. 左右サイドバー ＆ メインエリア --- */
+
+.sidebar-left, .sidebar-right {
+    width: 250px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    padding: 2.5rem 1rem;
+    overflow-y: auto;
+    flex-shrink: 0;
+    border-radius: 50px;
+}
+
+/* 左サイドバー（全体目次） */
+.sidebar-left {
+    border-right: var(--border-red-light);
+}
+
+/* 右サイドバー（詳細目次） */
+.sidebar-right {
+    border-left: var(--border-red-light);
+}
+
+/* 中央メインコンテンツ */
+.main-content {
+    flex: 1;
+    width: 860px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    padding: 2rem 2rem;
+}
+
+
+/* --- 3-3. ナビゲーション・目次内の装飾 --- */
+
+/* サイドバータイトル（大文字ヘッダーなど） */
+.sidebar-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-red-dark);
+    margin: 0.25rem;
+    text-shadow: var(--text-shadow-red-light);
+}
+
+.sidebar-title:hover {
+    color: var(--text-purple-dark);
+}
+
+.sidebar-subtitle {
+    font-size: 0.75rem;
+    color: var(--text-gray-medium);
+    margin: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* リンク集リスト（ul, li） */
+.nav-list {
+    list-style: none;
+}
+
+.nav-item {
+    margin-bottom: 0.4rem;
+}
+
+/* ナビゲーションリンク基本設定 */
+.nav-link {
+    color: var(--text-gray-dark);
+    text-decoration: none;
+    font-size: 0.85rem;
+    display: block;
+    padding: 0.4rem 0.6rem;
+    border-radius: var(--border-radius);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: var(--ease-micro);
+}
+
+/* マウスホバー時 */
+.nav-link:hover {
+    color: var(--text-red-dark);
+}
+
+/* 現在地（アクティブ状態） */
+.nav-link.active {
+    color: var(--text-red-dark);
+    font-weight: 600;
+    background-color: var(--background-red-light);
+}
+
+/* 右側詳細目次：H3（小見出し）の項目を少し右にインデントさせて階層化する */
+.nav-item-h3 {
+    padding-left: 1rem;
+}
+.nav-item-h2 {
+    font-weight: 600; /* H2は目次でも少し力強く起立させる */
+}
+
+
+/* --- 3-4. レスポンシブ非表示設定（画面幅による変化） --- */
+
+/* 画面幅が1250px以下になったら右目次を隠す */
+@media (max-width: 1380px) {
+    .sidebar-left {
+        display: none;
+    }
+    .main-content {
+        width: 860px;
+        padding: 2rem 2rem;
+    }
+}
+
+/* 画面幅が900px以下になったら左目次も隠し、本文の余白を詰める */
+@media (max-width: 1140px) {
+    .sidebar-right {
+        display: none;
+    }
+    .main-content {
+        width: 860px;
+        padding: 2rem 2rem;
+    }
+}
+
+@media (max-width: 880px) {
+    .main-content {
+        width: 100%;
+        padding: 2rem 1.5rem;
+    }
+}
