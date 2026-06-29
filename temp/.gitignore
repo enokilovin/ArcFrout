@@ -1,0 +1,3 @@
+# tempフォルダ内のすべてのファイルを無視（.gitignore以外）
+*
+!.gitignore

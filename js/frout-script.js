@@ -39,7 +39,7 @@ async function setupNavigation() {
     const sidebarRight = document.createElement('aside');
     sidebarRight.className = 'sidebar-right';
     sidebarRight.innerHTML = `
-        <div class="sidebar-title">目次</div>
+        <div class="sidebar-title">本文目次</div>
         <div class="sidebar-subtitle">Section Index</div>
         <nav><ul class="nav-list" id="detail-toc"></ul></nav>
     `;
