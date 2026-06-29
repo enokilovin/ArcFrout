@@ -12,7 +12,7 @@ async function setupNavigation() {
     const favicon = document.createElement('link');
     favicon.rel = 'icon';
     favicon.type = 'image/ico'; // PNGなら 'image/png'
-    favicon.href = '/image/favicon.ico';  // アイコンへのパス
+    favicon.href = '../image/favicon.ico';  // アイコンへのパス
     document.head.appendChild(favicon);
     })();
 
