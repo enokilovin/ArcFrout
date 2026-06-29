@@ -3,31 +3,6 @@
    ========================================================================== */
 
 /* --- 3-1. 全体・ベース設定 --- */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    animation: fadeIn 0.8s ease-in-out forwards;
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0.5;
-        transform: translateY(4px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-[id] {
-    scroll-margin-top: 2.5rem;
-}
 
 .site-container {
     display: flex;
