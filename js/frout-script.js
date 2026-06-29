@@ -46,7 +46,7 @@ async function setupNavigation() {
 
     // 3. 左メニュー（共通ファイル）を非同期で読み込む
     try {
-        const response = await fetch('/misc/sidebar-left.html');
+        const response = await fetch('./sidebar-left.html');
         if (response.ok) {
             const sidebarHTML = await response.text();
             sidebarLeft.innerHTML = sidebarHTML;
