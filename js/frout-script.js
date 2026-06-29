@@ -7,6 +7,15 @@ async function setupNavigation() {
     if (document.querySelector('.index-chapter-section')) return;
     if (document.querySelector('.site-container')) return;
 
+    // ファビコンを動的に生成してheadに差し込む処理
+    (function() {
+    const favicon = document.createElement('link');
+    favicon.rel = 'icon';
+    favicon.type = 'image/ico'; // PNGなら 'image/png'
+    favicon.href = 'https://enokilovin.github.io/ArcFrout/image/favicon.ico';  // アイコンへのパス
+    document.head.appendChild(favicon);
+    })();
+
     // 1. bodyの直下に最初からある元の要素（header, section等）をすべて取得
     const originalNodes = Array.from(document.body.children).filter(node => node.tagName !== 'SCRIPT');
 
