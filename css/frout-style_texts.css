@@ -46,7 +46,7 @@ h3 {
 
 /* 4. ハイライター＆インラインバッジ */
 mark {
-    background: linear-gradient(transparent 50%, var(--background-red-light) 50%);
+    background: linear-gradient(transparent 60%, var(--background-red-light) 50%);
     font-weight: 600;
     padding: 0 0.2rem;
     margin: 0 0.2rem;
@@ -58,15 +58,16 @@ strong {
 }
 
 a {
-    color: var(--text-purple-dark);
+    color: var(--text-blue);
     font-weight: 600;
     margin: 0 0.2rem;
-    transition: var(--ease-std);
+    text-decoration: none;
+    transition: var(--ease-micro);
 }
 
 a:hover,
 .sidebar-title {
-    text-decoration: none;
+    color: var(--text-purple-dark);
 }
 
 /* バッジ共通の骨組み */

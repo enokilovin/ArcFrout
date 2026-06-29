@@ -47,7 +47,7 @@
 }
 
 /* Unordered List */
-.frout-list ul {
+.frout-list ul, ol {
     list-style-type: disc;
     margin: 0;
     padding: 0;
@@ -56,8 +56,6 @@
 /* Ordered List */
 .frout-list ol {
     list-style-type: decimal;
-    margin: 0;
-    padding: 0;
 }
 
 /* List Item Padding */
@@ -77,8 +75,6 @@
 .frout-list ul ol,
 .frout-list ol ol {
     list-style-type: circle;
-    font-size: 0.85rem;
-    letter-spacing: 0.05em;
     padding-left: 1.8rem;
     margin-bottom: -0.6rem;
 }
@@ -376,6 +372,19 @@ sup a:focus-visible {
     }
 }
 
+/* frout-timestamp ---------------------------------------- */
+.frout-timestamp {
+    font-family: 'PT Mono', monospace;
+    display: block;
+    text-align: right;
+    gap: 1.5rem;
+    font-size: 0.8rem;
+    color: var(--text-gray-medium);
+}
+
+.frout-timestamp time:nth-child(2) {
+    color: var(--text-gray-dark);
+}
 
 /* class="rsc-grid" --------------------------------------- */
 
