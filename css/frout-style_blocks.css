@@ -10,7 +10,7 @@
 .frout-table, 
 .frout-image-block,
 .rsc-grid {
-    margin: 0 2rem 2.5rem 2rem;
+    margin: 0 1rem 2.5rem 1rem;
     border-radius: var(--border-radius);
 }
 
@@ -84,8 +84,6 @@
     list-style-type: decimal;
 }
 
-
-
 /* class="frout-accordion" -------------------------------- */
 
 /* Accordion Block */
@@ -97,13 +95,15 @@
 
 /*  Accordion Summary Clickable */
 .frout-accordion summary {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    padding: 1.2rem 1.8rem;
+    display: block;
+    position: relative;
+    padding: 1.2rem 4.6rem 1.2rem 1.8rem;
     font-weight: 600;
     cursor: pointer;
     list-style: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     transition: var(--ease-std);
 }
 
@@ -120,12 +120,16 @@
 .frout-accordion summary::after {
     content: "▷";
     color: var(--text-red-dark);
+    position: absolute;
+    right: 1.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-block;
     transition: var(--ease-std);
-    margin-left: auto;
 }
 
 .frout-accordion details[open] summary::after {
-    transform: rotate(90deg);
+    transform: translateY(-50%) rotate(90deg);
 }
 
 /* Accordion Open */
@@ -143,7 +147,6 @@
     background-color: var(--background-white);
     border-top: var(--border-red-light);
 }
-
 
 /* class="frout-blockquote" ------------------------------- */
 
@@ -166,7 +169,6 @@
     color: var(--text-red-dark);
     font-weight: 600;
 }
-
 
 /* class="frout-footnote" --------------------------------- */
 
@@ -222,7 +224,6 @@ sup a:focus-visible {
     color: var(--text-red-dark);
     outline: none;
 }
-
 
 /* class="frout-code" ------------------------------------- */
 
@@ -304,7 +305,6 @@ sup a:focus-visible {
 .frout-table tbody tr:hover {
     color: var(--text-red-dark);
 }
-
 
 /* class="frout-image-block" ------------------------------ */
 
