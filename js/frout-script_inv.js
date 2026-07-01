@@ -8,7 +8,7 @@ function checkAnswer() {
         document.getElementById('desc').classList.add('hidden');
         document.getElementById('link-area').classList.remove('hidden');
 
-        const code = "GaNPpqv"; 
+        const code = "3zKFnHRbUV"; 
         window.location.href = "https://" + "discord." + "gg/" + code;
     } else {
         errorMsg.classList.remove('hidden');
