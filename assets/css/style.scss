@@ -1,0 +1,206 @@
+---
+---
+
+@import url('https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&display=swap');
+
+:root {
+    // Colors
+    --text-main:         #001020;
+    --text-emphasis:     #200010;
+    --text-link:         #0044cc;
+    --text-list:         #909090;
+    --text-th:           #fdfeff;
+    --back-page:         #fffefd;
+    --back-marker:       #f3e8e8;
+    --back-code:         #f0f1f2;
+    --back-th:           #fdfeff;
+    --back-tr:           #f7f8f9;
+
+    // misc
+    --border-blockquote: 1px solid #d0d1d2;
+    --border-link: 1px solid #e0e1e2;
+    --border-table: 1px solid #e0e1e2;
+    --transition: all 0.1s ease-in-out;
+    --hover-shadow-gray: 1px 1px 1px #909090;
+    --hover-translate: translate(-0.1rem, -0.1rem);
+}
+
+.markdown-preview.markdown-preview {
+    // body
+    font-family: 'Zen Old Mincho', serif; 
+    font-size: 1rem; 
+    color: var(--text-main);
+    line-height: 1.9; 
+    letter-spacing: 0.03rem; 
+    text-align: justify;
+    background-color: var(--back-page);
+    max-width: 45.2rem;
+    margin: 0 auto !important;
+    padding: 2rem 2rem;
+
+    // emphasis: #, ##, ###, ####, **, *
+    h1, h2, h3, h4, strong, em, table th {
+        color: var(--text-emphasis);
+        -webkit-text-stroke: 0.02rem var(--text-emphasis);
+    }
+
+    h1, h2, h3, h4 {
+        margin-top: 4rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        line-height: 1.7;
+    }
+
+    // emphasis marker: *
+    em {
+        font-style: normal;
+        font-weight: 700;
+        background: linear-gradient(transparent 75%, var(--back-marker) 75%);
+        padding: 0 0.1em; 
+        margin: 0 0.1em;
+    }
+
+    // code: ``, blockquote: >, >>, ...
+    code, blockquote {
+        background-color: var(--back-code);
+        border-radius: 0.2rem;
+    }
+
+    // blockquote: >, >>, ...
+    blockquote {
+        border-left: var(--border-blockquote);
+        padding: 1rem 1rem;
+    }
+
+    // horizontal line: ---
+    hr {
+        border: none;
+        display: block;
+        text-align: center;
+        overflow: visible;
+        height: 1px;
+        margin: 4rem 1rem;
+
+        &::after {
+            content: '◇';
+            background: var(--back-page);
+            display: inline-block;
+            position: relative;
+            top: -1rem;
+            padding: 0 1rem;
+        }
+    }
+
+    // link: [text](url), [`text`](url)
+    a {
+        color: var(--text-link);
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+        code {
+            color: var(--text-blue);
+            background-color: var(--back-page);
+            border: var(--border-link);
+            margin: 0 0.3rem;
+        }
+    }
+
+    // list ul/ol: -, 1., 2., ...
+    li {
+        line-height: 2.1;
+        position: relative;
+
+        &::before {
+            position: absolute;
+            left: -1.4rem;
+            top: 0.4rem;
+            font-size: 0.7rem;
+            color: var(--text-list);
+        }
+    }
+
+    // list ul: -
+    ul {
+        list-style-type: none;
+
+        li::before {
+            content: '◇';
+        }
+    }
+
+    // list ol: 1., 2., ...
+    ol {
+        list-style-type: none;
+        counter-reset: i;
+        li {
+            counter-increment: i;
+            &::before {
+                content: counter(i)+ '.';
+            }
+        }
+    }
+
+    // table
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+        
+        // table header
+        th {
+            background-color: var(--back-th);
+            border-bottom: var(--border-table);
+            border-top: none;
+            &:first-child {
+                border-left: none;
+            }
+            &:last-child {
+                border-right: none;
+            }
+        }
+
+        // table data
+        td {
+            padding: 12px 15px;
+            border: none;
+            border-right: var(--border-table);
+
+            &:last-child {
+                border-right: none;
+            }
+        }
+
+        // table body
+        tbody {
+            tr:nth-child(odd) {
+            background-color: var(--back-tr);
+            }
+
+            tr:hover {
+            transition: var(--transition);
+            text-shadow: var(--hover-shadow-gray);
+            transform: var(--hover-translate);
+            }
+        }
+    }
+
+    // math
+    .math, .katex, .MathJax {
+        font-size: 1.15rem;
+        color: var(--text-emphasis);
+    }
+
+    .date {
+        font-family: monospace;
+        font-size: 0.7rem;
+        text-align: right;
+        margin-bottom: 0.2rem;
+        & + .date {
+            color: var(--text-emphasis);
+        }
+    }
+   
+}

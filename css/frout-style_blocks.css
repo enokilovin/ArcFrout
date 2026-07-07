@@ -191,14 +191,13 @@
     font-size: 0.85rem;
     padding: 0.3rem 0;
     line-height: 1.8;
-    display: flex;
-    gap: 0.5rem;
+    display: block;
 }
 
 /* Footnote List Item Marker */
 .frout-footnote li span:first-child {
     color: var(--text-red-dark);
-    flex-shrink: 0;
+    margin: 0 0.5rem;
 }
 
 /* Footnote List Item Link */
@@ -206,15 +205,14 @@ sup {
     font-size: 0.75em;
     font-weight: 600;
     vertical-align: super;
-    margin-left: 0.15rem;
 }
 
-/* Footnote List Item Link Hover */
+/* Footnote List Item Link */
 sup a {
+    display: inline-block;
     color: var(--text-blue);
     text-decoration: none;
-    padding: 0 2px;
-    border-radius: 2px;
+    margin: 0;
     transition: var(--ease-micro);
 }
 
@@ -222,7 +220,8 @@ sup a {
 sup a:hover, 
 sup a:focus-visible {
     color: var(--text-red-dark);
-    outline: none;
+    text-shadow: var(--text-shadow-red-light);
+    transform: var(--translate);
 }
 
 /* class="frout-code" ------------------------------------- */

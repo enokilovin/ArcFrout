@@ -12,7 +12,6 @@
     margin: 0 auto;
 }
 
-
 /* --- 3-2. 左右サイドバー ＆ メインエリア --- */
 
 .sidebar-left, .sidebar-right {
@@ -114,6 +113,12 @@
 
 
 /* --- 3-4. レスポンシブ非表示設定（画面幅による変化） --- */
+@media (max-width: 1920px) {
+    .main-content {
+        width: 860px;
+        padding: 3rem 3rem;
+    }
+}
 
 /* 画面幅が1250px以下になったら右目次を隠す */
 @media (max-width: 1380px) {
@@ -122,7 +127,7 @@
     }
     .main-content {
         width: 860px;
-        padding: 2rem 2rem;
+        padding: 3rem 3rem;
     }
 }
 
@@ -133,13 +138,16 @@
     }
     .main-content {
         width: 860px;
-        padding: 2rem 2rem;
+        padding: 3rem 3rem;
     }
 }
 
 @media (max-width: 880px) {
     .main-content {
         width: 100%;
-        padding: 2rem 1.5rem;
+        padding: 3rem 1rem;
+    }
+    p {
+        padding: 3rem 1rem;
     }
 }

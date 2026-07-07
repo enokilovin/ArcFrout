@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信号 ( SIGNAL ) ｜赤石初歩論｜FRouT</title>
+    <link rel="stylesheet" href="../css/frout-style.css">
+    <script src="../js/frout-script.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <div class="frout-timestamp">
+            <time datetime="2026-06-28">2026.07.02</time>
+            <time datetime="2026-06-30">📝2026.07.03</time>
+            <br><a href="https://x.com/enokilovin" target="_blank" rel="noopener noreferrer">@enokilovin</a>
+        </div>
+        <h1>信号</h1>
+        <p>赤石回路を構成する最も根本的な要素「信号」の基本仕様、強度、伝播の仕組みを整理します。</p>
+    </header>
+
+    <section id="section-01">
+        <h2>オフ / オン ( off / on ) = ( 0 / 1 )</h2>
+        <p>マインクラフトの世界にあるブロックは、オフまたはオンのどちらかの状態をつねにもっています。<mark>動力を受け取っていない状態を「オフ」</mark>と呼び、<mark>動力を受け取っている状態を「オン」</mark>と呼びます。たとえば、RSダストはオフのとき光っていませんが、オンのとき光っています。</p>
+        
+        <p>動力を生みだす方法や動力源となるブロックは多種多様です。レバーを引く、ボタンを押すなど多々あります。ただ赤石回路を動かすためには、その動力をいろいろな場所に送らなければいけません。<mark>動力を送ってくれるのが「信号」</mark>です。信号は 2 種類あって、オンにするための信号を「オン信号」と呼び、オフにするための信号を「オフ信号」と呼んで区別します。たとえば、ピストンはオン信号が送られると伸展し始めて、そのオンの状態でオフ信号が送られると収縮し始めます<sup><a href="#fn-1" id="sup-1">[1]</a></sup>。</p>
+        
+        <p>あるブロックにおいて、オフ信号が送られている状態を「オフ」「0」「LOW」と呼び、オン信号が送られている状態を「オン」「1」「HIGH」と呼ぶことがあります<sup><a href="#fn-2" id="sup-2">[2]</a></sup>。この別称はとりわけ論理回路のなかで重要になるので<span class="badge-xref">ブール論理｜V-Bool</span>という文書であつかうことにしましょう。とにかく、この<mark>二値（0 / 1）を上手にあつかうことができれば、マインクラフトの世界で複雑な自動装置や計算機などを作ることができる</mark>のです！</p>
+    </section>
+
+    <section id="section-02">
+        <h2>信号強度 ( signal strength ) = ( 0-15 )</h2>
+        <p>先ほど「ブロックは、オフまたはオンのどちらかの状態をつねにもっています」と述べました。これはデジタル（二値）の視点とも言えるのですが、それとは違うアナログ（多値）の視点もマインクラフトでは重要になります。アナログ信号、つまり「連続的な値をもつ信号」と深い関わりをもつブロックが<mark>RSダストとコンパレーター</mark>です。</p>
+        
+        <p>RSダストは光っている状態と光っていない状態をもっていますが、オン信号が送られて光った状態のなかでも光り方が様々あります。この<mark>光り方の違いは、信号の強さの違いによって生じる</mark>ものです。この信号の強さのことを<span class="badge-term">信号強度</span>と呼びます。</p>
+        
+        <p>まず信号強度は 0 から 15 まであります。そのうち、<strong>強度 0</strong> の信号が<strong>オフ</strong>信号のことで、それ以外の**強度 1 から 15 まで**の信号が<strong>オン</strong>信号です。RSダストの光り方は、受け取っている信号強度の違いによって段階的に変化します。一方、コンパレーターの光り方に段階はありませんが、この全 16 通りの強度を保持したまま信号を出力することができます<sup><a href="#fn-3" id="sup-3">[3]</a></sup>。</p>
+        
+        <p>一方、リピーターは信号強度を保持できず、オフ信号が送られると信号強度「0」を出力して、オン信号が送られると信号強度「15」にリセットして出力します。このように、RSダストとコンパレーター以外のブロックはすべてデジタルな動きをするわけです。</p>
+        
+        <p>なお英語圏では、信号強度のことを「ss」や「pl」と略すことがあります<a href="#fn-4" id="fnref-4" class="frout-fnref">[4]</a>。主に見かけるのは「ss」のほうで、たとえば「ss10」は「信号強度 10」を意味するので覚えておきましょう。</p>
+    </section>
+
+    <section id="section-03">
+        <h2>03. 動力源化 ( powered )</h2>
+        <p>動力を生みだす方法や動力源となるブロックの話に移りましょう。ブロックのなかには、もともと動力を生みだすために用意されたもの（ボタンなど）もあれば、そうではないものもあります。ただ動力を生みだせないブロックでも、その種類によってはオン信号が送られることによって<strong>動力源の代わり</strong>になるブロックもあります<a href="#fn-5" id="fnref-5" class="frout-fnref">[5]</a>。それはRSブロックのように、隣接するリピーターやトラップドア等々に対してオン信号を伝えることができるようになるわけです。これを「<strong>動力源化</strong>」と呼ぶことにしましょう。</p>
+        
+        <p>動力源化できる種類のブロックは「導体ブロック」あるいは単に「<strong>導体</strong>」と呼ばれています<a href="#fn-6" id="fnref-6" class="frout-fnref">[6]</a>。たとえば、丸石、RSランプ、ドロッパーなどは導体です。一方、ガラス、半ブロック、ピストンなどは動力源化できない「不導体ブロック」あるいは単に「<strong>不導体</strong>」と呼ばれ、オフ信号しか通さない絶縁体として働きます。いずれにしても、信号強度が維持される点に注意してください。</p>
+        
+        <p>なお任意のブロックが導体か不導体かまとめて知りたい場合は〈赤石素子分類｜I-04〉もしくは《<a href="https://docs.google.com/spreadsheets/d/1qNlQQlcUe8Ru-hSb54y4j7awFlFkwjqmdSGZ-JGZ3ss/edit?usp=sharing" target="_blank" rel="noopener noreferrer">赤石素子一覧｜I-05</a>》をご参照ください。</p>
+        
+        <p>さて、オン信号が送られた導体は動力源の代わりになるわけですが、何のブロックによってオン信号が送られたかにおうじて、オン信号をまわりにどう伝えるかが変わってきます。とりわけRSダストにオン信号を伝えるか伝えないかが変わってきます。この違いを理解するために「強-動力源化」と「弱-動力源化」というふうに区別して確かめていきましょう。この区別をうまく使えば回路を思いどおりに組みやすくなります！</p>
+
+        <h3 id="section-03-hard">強-動力源化 ( hard-powered )</h3>
+        <p>リピーター、コンパレーター、オブザーバーなどによって直接オン信号が送られた導体は「<strong>強-動力源化</strong>」します<a href="#fn-7" id="fnref-7" class="frout-fnref">[7]</a>。この状態だと、隣接するトラップドア等々だけでなく<strong>RSダストにもオン信号を伝えることができます</strong>。ただし、他の導体を動力源化することはできません。オン信号を新たに「生みだす」のではなく、送られたオン信号をまわりに「伝える」「通す」ことしかできないという点に注意してください。</p>
+
+        <h3 id="section-03-soft">弱-動力源化 ( soft-powered )</h3>
+        <p>RSダストによって直接オン信号が送られた導体は「<strong>弱-動力源化</strong>」します。この状態だと、隣接するトラップドア等々にオン信号を伝えることはできますが、<strong>別のRSダストにはオン信号を伝えることができません</strong><a href="#fn-8" id="fnref-8" class="frout-fnref">[8]</a>。もちろん、他の導体を動力源化することもできません。弱-動力源化の場合、裏を返せば、オン信号をRSダストに伝えないまま他のブロックに伝えることができるので、この<strong>範囲の狭さ</strong>をうまく使って回路を組むこともよくあります。</p>
+
+        <table class="frout-table">
+            <thead>
+                <tr>
+                    <th>タイプ</th>
+                    <th>RSダスト以外 から受信</th>
+                    <th>RSダスト から受信</th>
+                    <th>RSダスト以外 に送信</th>
+                    <th>RSダスト に送信</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>強-動力源化</strong></td>
+                    <td style="text-align: center;">✓</td>
+                    <td style="text-align: center;">-</td>
+                    <td style="text-align: center;">✓</td>
+                    <td style="text-align: center;">✓</td>
+                </tr>
+                <tr>
+                    <td><strong>弱-動力源化</strong></td>
+                    <td style="text-align: center;">-</td>
+                    <td style="text-align: center;">✓</td>
+                    <td style="text-align: center;">✓</td>
+                    <td style="text-align: center;">-</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-04">
+        <h2>04. 活性化 ( activated )</h2>
+        <p>ブロックのなかには、送られた信号に反応できるものがあります。たとえばTNTがオン信号に反応して爆発する、ピストンがオフ信号に反応して縮み始める等々です。このように、ブロックの種類によっては信号に反応して<strong>起動する、特有のアクション（状態や外見が変わるなど）を起こす</strong>ものがあります。これを「<strong>活性化</strong>」と呼びます。</p>
+        
+        <p>活性化できる種類のブロックを「<strong>起動素子</strong>」と呼ぶことにしましょう<a href="#fn-9" id="fnref-9" class="frout-fnref">[9]</a>。たとえばRSランプ、ピストン、レールは起動素子です。繰り返しになりますが、ブロックの分類をまとめて知りたい場合は〈赤石素子分類｜I-04〉もしくは《<a href="https://docs.google.com/spreadsheets/d/1qNlQQlcUe8Ru-hSb54y4j7awFlFkwjqmdSGZ-JGZ3ss/edit?usp=sharing" target="_blank" rel="noopener noreferrer">赤石素子一覧｜I-05</a>》をご参照ください。</p>
+        
+        <p>ここで注意が必要なのは、<strong>起動素子かつ導体</strong>である（活性化もできて動力源化もできる）ようなブロックがあることです。これに該当するのはRSランプやドロッパーで、状態としては以下の 4 通りの組み合わせがありえます<a href="#fn-10" id="fnref-10" class="frout-fnref">[10]</a>。順に考えてみましょう。</p>
+
+        <table class="frout-table">
+            <thead>
+                <tr>
+                    <th>状態</th>
+                    <th style="text-align: center;">①</th>
+                    <th style="text-align: center;">②</th>
+                    <th style="text-align: center;">③</th>
+                    <th style="text-align: center;">④</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>活性化</strong></td>
+                    <td style="text-align: center;">-</td>
+                    <td style="text-align: center;">✓</td>
+                    <td style="text-align: center;">-</td>
+                    <td style="text-align: center;">✓</td>
+                </tr>
+                <tr>
+                    <td><strong>動力源化</strong></td>
+                    <td style="text-align: center;">-</td>
+                    <td style="text-align: center;">-</td>
+                    <td style="text-align: center;">✓</td>
+                    <td style="text-align: center;">✓</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="frout-list">
+            <div>4 STATES</div>
+            <ul>
+                <li><strong>① 活性化も動力源化もしていない状態</strong><br>これはオフ信号が送られている状態です。特筆することはありません。</li>
+                <li><strong>② 活性化しているが動力源化していない状態</strong><br>これはたとえば導体を介してオン信号が送られている状態です。</li>
+                <li><strong>③ 活性化していないが動力源化している状態</strong><br>これは一見「矛盾」しています。というのも、オン信号が送られることによって動力源化しているはずなのに、なぜかその信号に反応せず活性化できていない状態だからです。そのため不可能なように思われますが、実際はそうではありません。すぐ後述します。</li>
+                <li><strong>④ 活性化も動力源化もしている状態</strong><br>これはたとえばリピーターによって直接オン信号が送られている状態です。③のような「矛盾」はありません。</li>
+            </ul>
+        </div>
+
+        <p>以上、起動素子かつ導体であるようなブロックの 4 通りの状態を確かめました。その結果「③活性化していないが動力源化している状態」は一見すると「矛盾」していて不可能だと思われましたが、実際は可能であると述べておきました。</p>
+        <p>この点を理解すること——この「矛盾」が矛盾ではないと理解して、不可能を可能にすること——こそ、赤石基礎論を理解するための第一歩としてふさわしいものです。次項で明らかにしていきましょう。</p>
+    </section>
+
+    <section id="section-05">
+        <h2>05. 起爆剤 ( activation trigger )</h2>
+        <p>活性化というのは、信号に反応して起動することでした。ただ起動素子が実際に動き始める、つまり「起爆」するためには信号が送られるだけでは不十分で、その信号に反応するための「<strong>起爆剤</strong>」も必要になります。その起爆剤のことを「<strong>隣接更新</strong>」と呼びます。</p>
+        
+        <p>起動素子は、隣接更新を受け取らないかぎり活性化することはありません。言いかえると、起動素子自身が<strong>今どのような状態になるべきか</strong>（オン信号が送られているかどうか、活性化すべきかどうか）<strong>は隣接更新を受け取ってはじめて判定される</strong>わけです。一般にマインクラフトの世界では、あるブロックの状態が変化するには隣接更新が必要です<a href="#fn-11" id="fnref-11" class="frout-fnref">[11]</a>。</p>
+        
+        <p>一方、動力源化については隣接更新が不要です。要するに、オン信号が送られて動力源化したものの、何らかの理由で隣接更新を受け取れなかった起動素子は活性化できていない状態になりうる、ということです。電源にはつながれているのに電源ボタンが押されていない状態といってもよいでしょう。この「<strong>信号と起爆剤の分離</strong>」という仕様をうまく使うことで、先ほどの「③活性化していないが動力源化している状態」をつくりだすことが可能になります。</p>
+        
+        <p>逆に、活性化したあとにオフ信号が送られていても何らかの理由で隣接更新を受け取れなかった起動素子は、まわりの変化に気づかず活性化したままの状態になります。このように、隣接更新を受け取ったブロックは自身の状態を「<strong>アップデート</strong>」させようとします。</p>
+
+        <div style="border: 1px solid #ccc; padding: 10px; text-align: center; font-weight: bold; background: #fafafa; margin: 20px 0;">
+            信号変化 ＋ 隣接更新 → 状態変化（アップデート）
+        </div>
+    </section>
+
+    <section id="conclusion">
+        <h2>おわりに</h2>
+        <p>オン信号とオフ信号の区別から始まり、信号強度、動力源化とその区別、活性化を通して、赤石の核心に踏みこむ起爆剤（隣接更新）にまで辿り着きました。本論の最後に触れた「信号と起爆剤の分離」という仕様は、赤石において極めて重要な意味をもっています。詳細は〈隣接更新｜I-03〉をご参照ください。</p>
+        
+        <p>なお活性化に関連して「信号と起爆剤の分離」を語るときに避けられないのは、「信号とブロックがどう接続するか」という配線の問題です。あわせて起動素子のなかでもピストン、ドロッパー、ディスペンサーだけは例外的な性質をもっていることも問題になります。この仕様については次の〈信号接続｜I-02〉で詳述して、配線技術については〈赤石回路設計法｜IV-Arch〉で触れる予定です。</p>
+
+        <div class="frout-list" style="margin-top: 30px; border-left: 3px solid #ff4500; padding-left: 15px;">
+            <div>編纂メモ（TODO）</div>
+            <ul>
+                <li>図解を増やす</li>
+                <li>比喩の導入：動力、信号、素子 → 太陽、光、日照センサー</li>
+                <li>図解案（信号強度の減衰：isometricRender）</li>
+                <li>信号と起爆剤の関係図：
+                    <pre style="background: #f4f4f4; padding: 5px 10px; font-family: monospace;">
+信号 → 〈起動〉 ← 更新
+信号 → 〈[B]UD〉 ← ×</pre>
+                </li>
+                <li>素子分類のツリー図作成の検討</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="footnotes" class="frout-footnote">
+        <div>注釈</div>
+        <ol>
+            <li id="fn-1"><span><a href="#sup-1">[1]</a></span>本来、信号が送られるだけでは動きませんが、その話は後述します。なおマインクラフトの世界では、オン信号とオフ信号が同時に送られている場合、オン信号が送られている判定になります。オフの状態は、オン信号が一切送られていない状態ともいえます。</li>
+            <li id="fn-2"><span><a href="#sup-2">[2]</a></span>定義補足）オフ信号が送られている状態＝動力を受け取っていない状態、オン信号が送られている状態＝動力を受け取っている状態。動力＝エネルギー、信号＝エネルギーを伝えるもの、信号を送るもの＝多種多様なブロック。</li>
+            <li id="fn-3"><span><a href="#sup-3">[3]</a></span><span>信号強度は基本的に全 16 通りしかありません。これは現実での 16 進数に対応しています。ただコンパレーターは、例外的に全 1127 通りの信号強度をもつことができます。cf. Tech MC Wiki, <a href="https://techmcdocs.github.io/pages/GameMechanics/ComparatorSignalStrength/" target="_blank" rel="noopener noreferrer">Comparator Signal Strength</a>.</span></li>
+            <li id="fn-4">順に「signal strength」「power level」の略称です。 <a href="#fnref-4">↩</a></li>
+            <li id="fn-5">「動力源の代わり」のことを「発信源」と呼んで区別してもよいかもしれません。 <a href="#fnref-5">↩</a></li>
+            <li id="fn-6">英語だと「conductor」です。わかりやすく「不透過ブロック」と呼ばれることも多く、また英語圏だと「solid block」をよく見聞きします。ただどちらも不正確なので、赤石基礎論では採用しません。 <a href="#fnref-6">↩</a></li>
+            <li id="fn-7">基本的にはRSダスト以外の「動力素子」が該当します。動力素子は「power component」の訳語で、レバー、ボタン、ディテクターレール、トラップチェスト、トリップワイヤ―フック、RSトーチなどがあります。いずれにしても動力を与える「方向」が重要になります。〈赤石素子分類｜I-04〉参照。 <a href="#fnref-7">↩</a></li>
+            <li id="fn-8">なぜ動力源化に「強弱」の区別があるかを考えるには、RSダストと導体の関係性を考える必要があります。重要なのは、導体がRSダストの接続を切る（断線させる）ことができるという点です。〈信号接続｜I-SigCon〉参照。 <a href="#fnref-8">↩</a></li>
+            <li id="fn-9">「mechanism component」の訳語です。これは活性化の原語「activate」の意味に近づけた訳です。 <a href="#fnref-9">↩</a></li>
+            <li id="fn-10">厳密にいうと、動力源化は強弱 2 種類に区別できるので全 6 通りがありえます。ただ、動力源化していて活性化していない状態をつくりだすのは基本プレイでは不可能に近いので、実質 4 通りです。 <a href="#fnref-10">↩</a></li>
+            <li id="fn-11">隣接更新を受け取らずに状態を変えることができるブロックも存在します。 <a href="#fnref-11">↩</a></li>
+        </ol>
+    </section>
+
+</body>
+</html>

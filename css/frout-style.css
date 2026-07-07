@@ -5,7 +5,7 @@
 @import url('frout-style_blocks.css');
 @import url('frout-style_toc.css');
 
-* {
+body {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
