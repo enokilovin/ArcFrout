@@ -11,6 +11,7 @@ Our goal is to raise the baseline knowledge across the Redstone community, clari
 
 - [`Frout_Website_Home`](https://enokilovin.github.io/ArcFrout/)
 - [`Frout_Discord`](https://enokilovin.github.io/ArcFrout/misc/invitation)
+- [`ArcFrout in Google Docs`](https://docs.google.com/document/d/1QLl-M_sjOdz4BTQEYii7CipwUkK51j4gSAtNs6vucTQ/edit?usp=sharing)
 
 ## 📚 ARTICLES
 
